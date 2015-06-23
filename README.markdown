@@ -4,28 +4,23 @@ This program takes a user's current food inventory and matches it to potential m
 ## Description
 In order to track this information, a "food database" of sorts will be needed. This will allow users to select what food they actually have in their cupboards. The food could be sorted by food-group, so it's easier for users to find what food items they have.
 
-This program should store selected food in a location to indicate what the user currently has available to make. It could track quantities. Maybe it also has a "did you make this meal?" option that removes those foods if the meal was made.
-
-The program will also need a list of recipes. The table to store this will need to have a recipe, then a food-type associated with a given recipe, perhaps the amount of time it takes to make the recipe, and a way to list all foods needed to make this recipe. Maybe the "did you make this meal?" could go here, time dependent.
+The program will also need a list of recipes. The table to store this will need to have a recipe, then a food-type associated with a given recipe, perhaps the amount of time it takes to make the recipe, and a way to list all foods needed to make this recipe.
 
 ## "Should" Cases
 The program should be able to:
 - Select food items they have and store those somewhere
-- Provide a list of recipes based on the current food inventory
+- Provide a list of recipes based on user selection of current foods
 - Sort recipes by food-type
 - View all recipes
 - View all food needed for one recipe
 - View all foods
-- View all foods in current food inventory
 - Sort food by food-group
 
 
 ## "Should Not" Cases
 The program should not:
-- Populate recipes without food in the current food inventory
-- Populate recipes with only partial food items in the current food inventory
+- Populate recipes without all food items selected as available by user
 - Create recipes without food-type associated
-- Delete an entire current food inventory
 - Delete all recipes
 - Delete the food database
 
@@ -39,5 +34,6 @@ The program should not:
 ## Stretches
 Only if there's time to create, the program will (in order of importance):
 - Sort recipes by time to make
-- Subtract food from the current food inventory if a meal was made
 - What am I missing to make this recipe?
+- Store the food a user has in a user inventory with quantities
+- Subtract food from the current food inventory if a meal was made
