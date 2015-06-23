@@ -6,6 +6,8 @@ In order to track this information, a "food database" of sorts will be needed. T
 
 The program will also need a list of recipes. The table to store this will need to have a recipe, then a food-type associated with a given recipe, perhaps the amount of time it takes to make the recipe, and a way to list all foods needed to make this recipe.
 
+A food-type table will store possible categories of recipes.
+
 ## "Should" Cases
 The program should be able to:
 - Select food items
@@ -15,7 +17,8 @@ The program should be able to:
 - View all food needed for one recipe
 - View all foods
 - Sort food by food-group
-
+- View all food-types
+- View all recipes in a food type
 
 ## "Should Not" Cases
 The program should not:
@@ -23,6 +26,7 @@ The program should not:
 - Create recipes without food-type associated
 - Delete all recipes
 - Delete the food database
+- Enter a food-type without a name
 
 ## Requirements
 - At least three models
