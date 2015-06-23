@@ -8,7 +8,7 @@ The program will also need a list of recipes. The table to store this will need 
 
 ## "Should" Cases
 The program should be able to:
-- Select food items they have and store those somewhere
+- Select food items
 - Provide a list of recipes based on user selection of current foods
 - Sort recipes by food-type
 - View all recipes
