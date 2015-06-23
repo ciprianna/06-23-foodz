@@ -9,5 +9,7 @@ require_relative "database_class_methods.rb"
 require_relative "database_instance_methods.rb"
 
 # Models
+require_relative "models/food.rb"
 
 # Controllers
+require_relative "controllers/food.rb"
