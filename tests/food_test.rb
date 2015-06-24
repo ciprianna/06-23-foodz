@@ -14,6 +14,25 @@ class FoodTest < Minitest::Test
     assert_equal(nil, pasta.category)
   end
 
-  
+  # Test to ensure that valid method returns true if the object is valid and
+  #   false, if not
+  def test_valid
+    pasta = Food.new
+
+    assert_equal(false, pasta.valid?)
+
+    pasta.name = "pasta"
+    assert_equal(false, pasta.valid?)
+
+    pasta.category = 4
+    assert_equal(true, pasta.valid?)
+
+    pasta.name = ""
+    assert_equal(false, pasta.valid?)
+
+    pasta.name = "pasta"
+    pasta.category = ""
+    assert_equal(false, pasta.valid?)
+  end
 
 end
