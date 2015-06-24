@@ -1,6 +1,6 @@
 require "pry"
 require "sinatra"
-require "sinatra-reloader"
+require "sinatra/reloader"
 
 # SQL/Database
 require "sqlite3"
@@ -12,4 +12,5 @@ require_relative "database_instance_methods.rb"
 require_relative "models/food.rb"
 
 # Controllers
+require_relative "controllers/main.rb"
 require_relative "controllers/food.rb"

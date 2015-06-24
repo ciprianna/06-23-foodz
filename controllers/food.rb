@@ -1,6 +1,13 @@
 # ------------------------------------------------------------------------------
 # Add a Food to the foods table
 # ------------------------------------------------------------------------------
+get "/view_all_food" do
+  erb :"food/view_all_food"
+end
+
+# ------------------------------------------------------------------------------
+# Add a Food to the foods table
+# ------------------------------------------------------------------------------
 # Step 1: Display an empty form
 get "/add_food" do
   erb :"food/add_food"
@@ -13,8 +20,9 @@ get "/save_new_food" do
   new_food = Food.new({"name" => params["name"], })
 
   if new_food.add_to_database
-    erb :"main/success"
+    erb :"food/success"
   else
     @error = true
     erb :"food/add_food"
+  end
 end
