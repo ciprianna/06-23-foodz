@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Add a Food to the foods table
+# View all foods in the foods table
 # ------------------------------------------------------------------------------
 get "/view_all_food" do
   erb :"food/view_all_food"
@@ -25,4 +25,11 @@ get "/save_new_food" do
     @error = true
     erb :"food/add_food"
   end
+end
+
+# ------------------------------------------------------------------------------
+# Display foods form for users to select available food items
+# ------------------------------------------------------------------------------
+get "/select_food" do
+  erb :"food/select_food"
 end

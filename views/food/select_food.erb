@@ -1,0 +1,43 @@
+<!-- Select available food items -->
+<head>
+  <h1><center>
+    Select Available Food Items
+  </center></h1>
+</head>
+<body>
+  <!-- TODO - Need to make "/get_recipes" views and route handlers -->
+  <form action="/get_recipes">
+    <% Food.all.each do |food| %>
+      <h3>Grains</h3>
+      <% if food.category == 4 %>
+        <label><input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %></label>
+      <% end %>
+      <h3>Proteins</h3>
+      <% if food.category == 5 %>
+        <label><input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %></label>
+      <% end %>
+      <h3>Dairy</h3>
+      <% if food.category == 1 %>
+        <label><input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %></label>
+      <% end %>
+      <h3>Fruits</h3>
+      <% if food.category == 3 %>
+        <label><input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %></label>
+      <% end %>
+      <h3>Vegetables</h3>
+      <% if food.category == 6 %>
+        <label><input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %></label>
+      <% end %>
+      <h3>Fats/Oils</h3>
+      <% if food.category == 2%>
+        <label><input type="checkbox" name="food_id" value="<%= food.name %>"><%= food.name %><label>
+      <% end %>
+    <% end %>
+    <input type="submit">
+  </form>
+</body>
+<footer>
+  <center>
+    <button><a href="/home">Home</a></button>
+  </center>
+</footer>

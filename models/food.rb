@@ -7,29 +7,29 @@ class Food
   include DatabaseInstanceMethods
 
   attr_reader :id
-  attr_accessor :name, :group
+  attr_accessor :name, :category
 
   # Initializes a new Food Object
   #
   # options - Empty Hash
   #   - id (optional) - Integer, primary key
   #   - name (optional) - String for the food name
-  #   - group (optional) - String for the food group
+  #   - category (optional) - String for the food group/category
   #
   # Returns a Food Object
   def initialize(options = {})
     @id = options["id"]
     @name = options["name"]
-    @group = options["group"]
+    @category = options["category"]
   end
 
-  # Returns all rows from the foods table in the passed group
+  # Returns all rows from the foods table in the passed category
   #
-  # group - String for the food group
+  # category - String for the food group/category
   #
   # Returns an Array of Food Objects
-  def self.where_group(group)
-    results = DATABASE.execute("SELECT * FROM foods WHERE group = '#{group}';")
+  def self.where_category(category)
+    results = DATABASE.execute("SELECT * FROM foods WHERE category = '#{category}';")
 
     store_results = []
 
@@ -45,7 +45,7 @@ class Food
   # Returns the Object if it was added to the database or false if it failed
   def add_to_database
     if self.valid?
-      Food.add({"name" => "#{self.name}", "group" => "#{self.group}"})
+      Food.add({"name" => "#{self.name}", "category" => "#{self.category}"})
     else
       false
     end
@@ -73,7 +73,7 @@ class Food
       valid = false
     end
 
-    if self.group.nil? || self.group == ""
+    if self.category.nil? || self.category == ""
       valid = false
     end
 
@@ -87,7 +87,7 @@ class Food
   #   - add_to_database (Instance)
   #   - "extend" add method (Class)
   # Read
-  #   - where_group (Class)
+  #   - where_category (Class)
   #   - "extend" all method (Class)
   # Update
   #   - valid_save (Instance)
