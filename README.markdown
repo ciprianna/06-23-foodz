@@ -6,7 +6,8 @@ In order to track this information, a "food database" of sorts will be needed. T
 
 The program will also need a list of recipes. The table to store this will need to have a recipe, then a food-type associated with a given recipe, perhaps the amount of time it takes to make the recipe, and a way to list all foods needed to make this recipe.
 
-A food-type table will store possible categories of recipes.
+A recipe-types table will store possible categories of recipes.
+A categories table will store ids and names of food categories.
 
 ## "Should" Cases
 The program should be able to:

@@ -15,19 +15,22 @@
     <p>
       Name of the new food item:
     </p>
-    <input type="text" name="name" placeholder="Name of Food" value="params['name']">
+    <input type="text" name="name" placeholder="Name of Food" value="<%= params["name"] %>">
     <p>
       Food category of the new item:
     <select name="category">
-<!-- Should this be another table? Just like the food categories? Would perhaps be easier to list and sort by -->
-      <option>Dairy</option>
-      <option>Fat/Oil</option>
-      <option>Fruit</option>
-      <option>Grain</option>
-      <option>Protein</option>
-      <option>Vegetable</option>
+<!-- TODO - categories table has yet to be created!!! -->
+      <% Category.all.each do |category| %>
+        <% if params["category"] == category.id %>
+          <option value="<%= category.id %>" selected><%= category.name %></option>
+        <% else %>
+          <option value="<%= category.id %>"><%= category.name %></option>
+        <% end %>
+      <% end %>
     </select>
-    <input type="submit">
+    </p>
+    <p>
+      <input type="submit">
     </p>
   </form>
 </body>
