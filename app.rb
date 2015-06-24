@@ -10,6 +10,7 @@ require_relative "database_instance_methods.rb"
 
 # Models
 require_relative "models/food.rb"
+require_relative "models/category.rb"
 
 # Controllers
 require_relative "controllers/main.rb"
