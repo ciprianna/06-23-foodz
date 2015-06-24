@@ -26,7 +26,7 @@ module DatabaseClassMethods
   #
   # record_id - Integer indicating the primary key for the row
   #
-  # Returns an Array containing a Hash for the row
+  # Returns an Object
   def find(record_id)
     table = self.to_s.pluralize.underscore
 

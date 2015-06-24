@@ -1,0 +1,20 @@
+<!-- View all food items -->
+<head>
+  <h1><center>
+    View All Food
+  </center></h1>
+</head>
+<body>
+  <ul>
+    <% Food.all.each do |food| %>
+      <li>
+        <b>ID</b>: <%= food.id %>, <b>Name</b>:  <%= food.name %>, <b>Food Group</b>:  <%= food.group %>
+      </li>
+    <% end %>
+  </ul>
+</body>
+<footer>
+  <center>
+    <button><a href="/home">Home</a></button>
+  </center>
+</footer>

@@ -1,0 +1,38 @@
+<!-- Error Message to display if the new food cannot be added -->
+<% if @error %>
+  <h3>Cannot add food: Missing information</h3>
+<% end %>
+
+<!-- Add new food item -->
+<head>
+  <h1><center>
+    Add a New Food
+  </center></h1>
+</head>
+<body>
+  <h2>Enter the following information to add food to the database:</h2>
+  <form action="/save_new_food">
+    <p>
+      Name of the new food item:
+    </p>
+    <input type="text" name="name" placeholder="Name of Food" value="params['name']">
+    <p>
+      Food group of the new item:
+    <select name="group">
+<!-- Should this be another table? Just like the food categories? Would perhaps be easier to list and sort by -->
+      <option>Dairy</option>
+      <option>Fat/Oil</option>
+      <option>Fruit</option>
+      <option>Grain</option>
+      <option>Protein</option>
+      <option>Vegetable</option>
+    </select>
+    <input type="submit">
+    </p>
+  </form>
+</body>
+<footer>
+  <center>
+    <button><a href="/home">Home</a></button>
+  </center>
+</footer>
