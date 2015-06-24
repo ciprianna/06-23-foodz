@@ -30,6 +30,9 @@ end
 # ------------------------------------------------------------------------------
 # Display foods form for users to select available food items
 # ------------------------------------------------------------------------------
+# Step 1: Empty food form displaying all food choices
 get "/select_food" do
   erb :"food/select_food"
 end
+# Step 2: Send the form to a save file in the recipes section
+#   Route handler in the controller recipe file.
