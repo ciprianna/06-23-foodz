@@ -1,0 +1,20 @@
+<!-- View all food items -->
+<head>
+  <h1><center>
+    Categories
+  </center></h1>
+</head>
+<body>
+  <ul>
+    <% Category.all.each do |category| %>
+      <li>
+        <b><%= category.id %></b> - <i><%= category.name %></i>
+      </li>
+    <% end %>
+  </ul>
+</body>
+<footer>
+  <center>
+    <button><a href="/home">Home</a></button>
+  </center>
+</footer>

@@ -15,3 +15,4 @@ require_relative "models/category.rb"
 # Controllers
 require_relative "controllers/main.rb"
 require_relative "controllers/food.rb"
+require_relative "controllers/category.rb"

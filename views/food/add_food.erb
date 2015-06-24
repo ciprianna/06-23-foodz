@@ -19,9 +19,8 @@
     <p>
       Food category of the new item:
     <select name="category">
-<!-- TODO - categories table has yet to be created!!! -->
       <% Category.all.each do |category| %>
-        <% if params["category"] == category.id %>
+        <% if params["category"].to_i == category.id %>
           <option value="<%= category.id %>" selected><%= category.name %></option>
         <% else %>
           <option value="<%= category.id %>"><%= category.name %></option>
