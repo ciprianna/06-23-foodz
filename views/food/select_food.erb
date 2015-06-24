@@ -8,28 +8,38 @@
   <!-- TODO - Need to make "/get_recipes" views and route handlers -->
   <form action="/get_recipes">
     <% Food.all.each do |food| %>
-      <h3>Grains</h3>
       <% if food.category == 4 %>
+        <h3>Grains</h3>
         <label><input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %></label>
       <% end %>
-      <h3>Proteins</h3>
+    <% end %>
+    <% Food.all.each do |food| %>
       <% if food.category == 5 %>
+        <h3>Proteins</h3>
         <label><input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %></label>
       <% end %>
-      <h3>Dairy</h3>
+    <% end %>
+    <% Food.all.each do |food| %>
       <% if food.category == 1 %>
+        <h3>Dairy</h3>
         <label><input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %></label>
       <% end %>
-      <h3>Fruits</h3>
+    <% end %>
+    <% Food.all.each do |food| %>
       <% if food.category == 3 %>
+        <h3>Fruits</h3>
         <label><input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %></label>
       <% end %>
-      <h3>Vegetables</h3>
+    <% end %>
+    <% Food.all.each do |food| %>
       <% if food.category == 6 %>
+        <h3>Vegetables</h3>
         <label><input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %></label>
       <% end %>
-      <h3>Fats/Oils</h3>
+    <% end %>
+    <% Food.all.each do |food| %>
       <% if food.category == 2%>
+        <h3>Fats/Oils</h3>
         <label><input type="checkbox" name="food_id" value="<%= food.name %>"><%= food.name %><label>
       <% end %>
     <% end %>
