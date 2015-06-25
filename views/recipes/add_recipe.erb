@@ -1,0 +1,39 @@
+<!-- Error Message to display if the new recipe cannot be added -->
+<% if @error %>
+  <h3>Cannot add recipe: Missing information</h3>
+<% end %>
+
+<!-- Add new recipe -->
+<head>
+  <h1><center>
+    Add New Recipe
+  </center></h1>
+</head>
+<body>
+  <form action="/save_new_recipe">
+    <h3>What's the name of your recipe?</h3>
+    <input type="text" name="recipe[name]" placeholder="Name of New Recipe">
+    <p>
+      <h3>Type of recipe:</h3>
+    <select name="recipe[recipe_type]">
+      <% RecipeType.all.each do |type| %>
+        <option value="<%= type.id %>"><%= type.name %></option>
+      <% end %>
+    </select>
+    </p>
+    <p>How many minutes does this take to make?
+    <input type="number" name="recipe[time_to_make]" placeholder="Minutes">
+    </p>
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+  <p>
+    <a href="/view_recipe_types">Return to View All Recipe Types</a>
+  </p>
+</body>
+<footer>
+  <center>
+    <button><a href="/home">Home</a></button>
+  </center>
+</footer>

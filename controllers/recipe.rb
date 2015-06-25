@@ -24,5 +24,15 @@ end
 get "/display_recipes_by_time" do
   @recipes_to_show = Recipe.where_time(params["recipes"]["time"])
 
-  erb :display_recipes_by_time
+  erb :"recipes/display_recipes_by_time"
 end
+
+# ------------------------------------------------------------------------------
+# Adds a new recipe
+# ------------------------------------------------------------------------------
+# Step 1: Displays an empty form for the new recipe
+get "/add_recipe" do
+  erb :"recipes/add_recipe"
+end
+
+# Step 2: 
