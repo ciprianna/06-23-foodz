@@ -24,6 +24,18 @@
     <p>How many minutes does this take to make?
     <input type="number" name="recipe[time_to_make]" placeholder="Minutes">
     </p>
+    <ul>
+      <% Category.all.each do |category| %>
+        <h3><%= category.name %></h3>
+        <% category.foods.each do |food| %>
+            <li>
+              <label><input type="checkbox" value="<%= food.id %>"><%= food.name %></label>
+            </li>
+          <% end %>
+      <% end %>
+    </ul>
+    <p>Recipe Instructions:</p>
+      <textarea name="recipe[information]" rows="10" cols="50" placeholder="Enter recipe instructions here:"></textarea>
     <p>
       <input type="submit">
     </p>

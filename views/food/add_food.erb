@@ -15,12 +15,12 @@
     <p>
       Name of the new food item:
     </p>
-    <input type="text" name="name" placeholder="Name of Food" value="<%= params["name"] %>">
+    <input type="text" name="foods[name]" placeholder="Name of Food" value="<%= params['foods']['name'] %>">
     <p>
       Food category of the new item:
-    <select name="category">
+    <select name="foods[category_id]">
       <% Category.all.each do |category| %>
-        <% if params["category"].to_i == category.id %>
+        <% if params["foods"]["category_id"].to_i == category.id %>
           <option value="<%= category.id %>" selected><%= category.name %></option>
         <% else %>
           <option value="<%= category.id %>"><%= category.name %></option>

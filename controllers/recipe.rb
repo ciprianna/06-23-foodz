@@ -35,4 +35,10 @@ get "/add_recipe" do
   erb :"recipes/add_recipe"
 end
 
-# Step 2: 
+# Step 2: Save new recipe
+get "/save_new_recipe" do
+  binding.pry
+  recipe_to_add = Recipe.new({"name" => params['recipe']['name'], "recipe_type" => params['recipe']['recipe_type'], "time_to_make" => params['recipe']['time_to_make'], "information" => params['recipe']['information']})
+
+  erb :"recipes/success"
+end
