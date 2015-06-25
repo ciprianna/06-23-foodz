@@ -1,0 +1,25 @@
+<!-- Error Message to display if the new recipe type cannot be added -->
+<% if @error %>
+  <h3>Cannot add recipe type: Missing information</h3>
+<% end %>
+
+<!-- Add new recipe type -->
+<head>
+  <h1><center>
+    Add New Recipe Type
+  </center></h1>
+</head>
+<body>
+  <form action="/save_new_recipe_type">
+    <input type="text" name="recipetype['name']" placeholder="Name of New Recipe Type">
+    <input type="submit">
+  </form>
+  <p>
+    <a href="/view_recipe_types">Return to View All Recipes</a>
+  </p>
+</body>
+<footer>
+  <center>
+    <button><a href="/home">Home</a></button>
+  </center>
+</footer>
