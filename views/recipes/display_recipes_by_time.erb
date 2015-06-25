@@ -1,0 +1,27 @@
+<!-- View Recipes by Time -->
+<head>
+  <h1><center>
+    Recipes that are <% if params["recipes"]["time"] == "hour" %>
+    around an <%= params["recipes"]["time"] %>
+    <% else %>
+    <%= params["recipes"]["time"] %>
+    <% end %>
+  </center></h1>
+</head>
+<body>
+  <ul>
+    <% @recipes_to_show.each do |recipe| %>
+    <li>
+      <a href="/all_recipes/:id"><b><%= recipe.id %></b> - <i><%= recipe.name %></i></a>, <b>Time to Make</b>: <%= recipe.time_to_make %>
+    </li>
+    <% end %>
+  </ul>
+  <p>
+    <a href="/all_recipes">Return to All Recipes</a>
+  </p>
+</body>
+<footer>
+  <center>
+    <button><a href="/home">Home</a></button>
+  </center>
+</footer>

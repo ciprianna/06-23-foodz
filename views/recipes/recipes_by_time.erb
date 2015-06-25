@@ -7,15 +7,17 @@
 <body>
   <h3>Select the amount of time you'd like to spend cooking</h3>
   <form action="/display_recipes_by_time">
-    <option value="quick">
-      Less than 30 minutes
-    </option>
-    <option value="hour">
-      30 min - 1 hour
-    </option>
-    <option value="long">
-      More than an hour
-    </option>
+    <select name="recipes[time]">
+      <option value="quick">
+        Less than 30 minutes
+      </option>
+      <option value="hour">
+        30 min - 1 hour
+      </option>
+      <option value="long">
+        More than an hour
+      </option>
+    </select>
     <p>
       <input type="submit">
     </p>
