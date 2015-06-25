@@ -7,7 +7,7 @@ class Recipe
   include DatabaseInstanceMethods
 
   attr_reader :id
-  attr_accessor :name, :recipe_type
+  attr_accessor :name, :recipe_type, :time_to_make
 
   # Creates a new Recipe Object
   #
@@ -16,12 +16,15 @@ class Recipe
   #   - name (optional) - String, name for the Recipe
   #   - recipe_type (optional) - Integer, foreign key from the recipe_types
   #                               table
+  #   - time_to_make (optional) - Integer, number of minutes it takes to make
+  #                                 the recipe
   #
   # Returns new Recipe Object
   def initialize(options = {})
     @id = options["id"]
     @name = options["name"]
     @recipe_type = options["recipe_type"]
+    @time_to_make = options["time_to_make"]
   end
 
   # Gives recipes within a certain recipe type
@@ -42,12 +45,36 @@ class Recipe
     return store_results
   end
 
+  # Returns recipes based on amount of time it takes to make
+  #
+  # time - String, indicating the amount of time it takes. Should be categories
+  #         of either "quick", "hour", or "long"
+  #
+  # Returns an Array of Objects
+  def where_time(time)
+    if time == "quick"
+      results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make >= 30;")
+    elsif time == "hour"
+      results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make > 30 AND WHERE time_to_make <= 65;")
+    elsif time == "long"
+      results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make > 65;")
+    end
+
+    store_results = []
+
+    results.each do |hash|
+      store_results << Recipe.new(hash)
+    end
+
+    return store_results
+  end
+
   # Adds a new Object to the database if it has valid fields
   #
   # Returns the Object if it was added to the database or false if it failed
   def add_to_database
     if self.valid?
-      Recipe.add({"name" => "#{self.name}", "recipe_type" => "#{self.recipe_type}"})
+      Recipe.add({"name" => "#{self.name}", "recipe_type" => "#{self.recipe_type}", "time_to_make" => "#{self.time_to_make}"})
     else
       false
     end
@@ -76,6 +103,10 @@ class Recipe
     end
 
     if self.recipe_type.nil? || self.recipe_type == ""
+      valid = false
+    end
+
+    if self.time_to_make.nil? || self.time_to_make == ""
       valid = false
     end
 
