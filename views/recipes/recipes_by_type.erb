@@ -6,12 +6,13 @@
 </head>
 <body>
   <ul>
-    <% Recipe.all.each do |recipe| %>
-      <%= if recipe.recipe_type == 1 %>
-        <h3>American</h3>
-        <li>
-          <b><%= recipe.id %></b> - <i><%= recipe.name %></i>, <b>Time to Make</b>: <%= recipe.time_to_make %>
-        </li>
+    <% RecipeType.each do |type| %>
+      <h3><%= type.name %></h3>
+      <% type.recipes.each do |recipe| %>
+          <li>
+            <a href="/all_recipes/:id"><b><%= recipe.id %></b> - <i><%= recipe.name %></i></a>, <b>Time to Make</b>: <%= recipe.time_to_make %>
+          </li>
+        <% end %>
     <% end %>
   </ul>
   <p>
