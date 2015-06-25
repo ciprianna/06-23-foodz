@@ -7,7 +7,7 @@ class Recipe
   include DatabaseInstanceMethods
 
   attr_reader :id
-  attr_accessor :name, :recipe_type, :time_to_make
+  attr_accessor :name, :recipe_type, :time_to_make, :information
 
   # Creates a new Recipe Object
   #
@@ -18,6 +18,7 @@ class Recipe
   #                               table
   #   - time_to_make (optional) - Integer, number of minutes it takes to make
   #                                 the recipe
+  #   - information (optional) - String giving steps to make the recipe
   #
   # Returns new Recipe Object
   def initialize(options = {})
@@ -25,6 +26,7 @@ class Recipe
     @name = options["name"]
     @recipe_type = options["recipe_type"]
     @time_to_make = options["time_to_make"]
+    @information = options["information"]
   end
 
   # Gives recipes within a certain recipe type
@@ -74,7 +76,7 @@ class Recipe
   # Returns the Object if it was added to the database or false if it failed
   def add_to_database
     if self.valid?
-      Recipe.add({"name" => "#{self.name}", "recipe_type" => "#{self.recipe_type}", "time_to_make" => "#{self.time_to_make}"})
+      Recipe.add({"name" => "#{self.name}", "recipe_type" => "#{self.recipe_type}", "time_to_make" => "#{self.time_to_make}", "information" => "#{self.information}"})
     else
       false
     end
@@ -107,6 +109,10 @@ class Recipe
     end
 
     if self.time_to_make.nil? || self.time_to_make == ""
+      valid = false
+    end
+
+    if self.information.nil? || self.time_to_make == ""
       valid = false
     end
 
