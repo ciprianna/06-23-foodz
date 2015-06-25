@@ -112,7 +112,7 @@ class Recipe
       valid = false
     end
 
-    if self.information.nil? || self.time_to_make == ""
+    if self.information.nil? || self.information == ""
       valid = false
     end
 
