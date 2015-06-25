@@ -15,10 +15,9 @@ end
 
 # Step 2: Save form information to database
 get "/save_new_recipe_type" do
-  added_recipe = RecipeType.new({"name" => "params['recipetype']['name']"})
-
+  added_recipe = RecipeType.new({"name" => "#{params['recipetype']['name']}"})
   if added_recipe.add_to_database
-    erb :"recipe_types/success.erb"
+    erb :"recipe_types/success"
   else
     @error = true
     erb :"recipe_types/add_recipe_type"
