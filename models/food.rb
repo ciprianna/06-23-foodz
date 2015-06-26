@@ -7,7 +7,7 @@ class Food
   include DatabaseInstanceMethods
 
   attr_reader :id
-  attr_accessor :name, :category
+  attr_accessor :name, :category_id
 
   # Initializes a new Food Object
   #
@@ -20,16 +20,16 @@ class Food
   def initialize(options = {})
     @id = options["id"]
     @name = options["name"]
-    @category = options["category"]
+    @category_id = options["category_id"]
   end
 
   # Returns all rows from the foods table in the passed category
   #
-  # category - String for the food group/category
+  # category_id - String for the food group/category
   #
   # Returns an Array of Food Objects
-  def self.where_category(category)
-    results = DATABASE.execute("SELECT * FROM foods WHERE category = '#{category}';")
+  def self.where_category(category_id)
+    results = DATABASE.execute("SELECT * FROM foods WHERE category_id = '#{category_id}';")
 
     store_results = []
 
@@ -45,7 +45,7 @@ class Food
   # Returns the Object if it was added to the database or false if it failed
   def add_to_database
     if self.valid?
-      Food.add({"name" => "#{self.name}", "category" => "#{self.category}"})
+      Food.add({"name" => "#{self.name}", "category_id" => "#{self.category_id}"})
     else
       false
     end
@@ -73,7 +73,7 @@ class Food
       valid = false
     end
 
-    if self.category.nil? || self.category == ""
+    if self.category_id.nil? || self.category_id == ""
       valid = false
     end
 
