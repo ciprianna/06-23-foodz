@@ -77,10 +77,19 @@ class Recipe
   #
   # Returns the Object it's being called on
   def add_to_bridge(food_ids)
-    food_ids.each do |f_id|
-      food_ids_for_sql = f_id.to_i
-      query_string = "INSERT INTO recipes_foods (recipe_id, food_id) VALUES (#{self.id}, #{food_ids_for_sql});"
-      DATABASE.execute(query_string)
+    recipe = DATABASE.execute("SELECT * FROM recipes_foods WHERE recipe_id = #{self.id};")
+
+    if recipe.nil?
+      food_ids.each do |f_id|
+        food_ids_for_sql = f_id.to_i
+        DATABASE.execute("INSERT INTO recipes_foods (recipe_id, food_id) VALUES (#{self.id}, #{food_ids_for_sql});")
+      end
+    else
+      DATABASE.execute("DELETE FROM recipes_foods WHERE recipe_id = #{self.id}")
+      food_ids.each do |f_id|
+        food_ids_for_sql = f_id.to_i
+        DATABASE.execute("INSERT INTO recipes_foods (recipe_id, food_id) VALUES (#{self.id}, #{food_ids_for_sql});")
+      end
     end
     return self
   end

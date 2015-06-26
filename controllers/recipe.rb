@@ -41,7 +41,7 @@ get "/save_new_recipe" do
 
 
   add_recipe = recipe_to_add.add_to_database
-  if !add_recipe.nil?
+  if !add_recipe == false
     add_recipe.add_to_bridge(params["food"]["food_id"])
     erb :"recipes/success"
   else
@@ -81,7 +81,10 @@ get "/save_edited_recipe" do
   recipe_to_change.recipe_type_id = params["recipe"]["recipe_type_id"].to_i
   recipe_to_change.information = params["recipe"]["information"]
 
-  if recipe_to_change.save_valid
+  saved_recipe = recipe_to_change.save_valid
+
+  if !saved_recipe == false
+    saved_recipe.add_to_bridge(params["food"]["food_id"])
     erb :"recipes/success"
   else
     @error = true
