@@ -75,11 +75,14 @@ class Recipe
   #
   # food_ids - Array of food_id Integers; primary keys in the foods table
   #
-  # Returns
+  # Returns the Object it's being called on
   def add_to_bridge(food_ids)
-    food_ids.each do |food_id|
-      DATABASE.execute("INSERT INTO recipes_foods (recipe_id, food_id) VALUES (#{self.id}, food_id);")
+    food_ids.each do |f_id|
+      food_ids_for_sql = f_id.to_i
+      query_string = "INSERT INTO recipes_foods (recipe_id, food_id) VALUES (#{self.id}, #{food_ids_for_sql});"
+      DATABASE.execute(query_string)
     end
+    return self
   end
 
   # Adds a new Object to the database if it has valid fields
@@ -125,6 +128,14 @@ class Recipe
 
     if self.information.nil? || self.information == ""
       valid = false
+    end
+
+    names = DATABASE.execute("SELECT name FROM recipes;")
+
+    names.each do |names|
+      if names["name"] == @name
+        valid = false
+      end
     end
 
     return valid
