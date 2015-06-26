@@ -85,6 +85,13 @@ class Recipe
     return self
   end
 
+  # Selects all foods in a recipe
+  #
+  # Returns an Array of Hashes
+  def foods
+    results = DATABASE.execute("SELECT foods.name FROM foods JOIN recipes_foods ON foods.id = recipes_foods.food_id WHERE recipes_foods.recipe_id = #{self.id};")
+  end
+
   # Adds a new Object to the database if it has valid fields
   #
   # Returns the Object if it was added to the database or false if it failed
