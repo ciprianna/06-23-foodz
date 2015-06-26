@@ -77,6 +77,11 @@ class Food
       valid = false
     end
 
+    existing_food = DATABASE.execute("SELECT * FROM foods WHERE name = #{@name};")
+    if !existing_food.empty?
+      valid = false
+    end
+    
     return valid
   end
 
