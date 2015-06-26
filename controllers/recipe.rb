@@ -65,7 +65,22 @@ end
 
 # Step 2: Display form to edit information
 get "/edit_recipe/:id" do
+  @recipe_to_change = Recipe.find(params["id"])
   erb :"recipes/edit_recipe_form"
 end
 
 # Step 3: Save new information
+get "/save_edited_recipe" do
+  recipe_to_change = Recipe.find(params["recipe"]["id"])
+  recipe_to_change.name = params["recipe"]["name"]
+  recipe_to_change.time_to_make = params["recipe"]["time_to_make"].to_i
+  recipe_to_change.recipe_type_id = params["recipe"]["recipe_type_id"].to_i
+  recipe_to_change.information = params["recipe"]["information"]
+
+  if recipe_to_change.save_valid
+    erb :"recipes/success"
+  else
+    @error = true
+    erb :"recipes/edit_recipe_form"
+  end
+end

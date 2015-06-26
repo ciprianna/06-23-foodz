@@ -1,0 +1,59 @@
+<!-- Error Message to display if the new recipe cannot be added -->
+<% if @error %>
+  <h3>Cannot change recipe: Missing information</h3>
+<% end %>
+
+<!-- Add new recipe -->
+<head>
+  <h1><center>
+    Change desired information, then click "submit"
+  </center></h1>
+</head>
+<body>
+  <form action="/save_edited_recipe">
+    <h3>Recipe Name</h3>
+    <input type="text" name="recipe[name]" placeholder="Name of New Recipe" value="<%= @recipe_to_change.name %>">
+    <p>
+      <h3>Type of recipe:</h3>
+    <select name="recipe[recipe_type_id]">
+      <% RecipeType.all.each do |type| %>
+        <% if @recipe_to_change.recipe_type_id == type.id %>
+          <option value="<%= type.id %>" select><%= type.name %></option>
+        <% else %>
+          <option value="<%= type.id %>"><%= type.name %></option>
+        <% end %>
+      <% end %>
+    </select>
+    </p>
+    <p>How many minutes does this take to make?
+    <input type="number" name="recipe[time_to_make]" placeholder="Minutes" value="<%= @recipe_to_change.time_to_make %>">
+    </p>
+    <ul>
+      <% Category.all.each do |category| %>
+        <h3><%= category.name %></h3>
+        <% category.foods.each do |food| %>
+            <li>
+              <label><input type="checkbox" name="food[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+            </li>
+          <% end %>
+      <% end %>
+    </ul>
+    <p>
+      If the food you need isn't in the inventory, please add it <a href="/add_food">here</a> before creating your recipe.
+    </p>
+    <p>Recipe Instructions:</p>
+      <textarea name="recipe[information]" rows="20" cols="75" placeholder="Enter recipe instructions here:"><%= @recipe_to_change.information %></textarea>
+      <input type="hidden" name="recipe[id]" value="<%= params['id'] %>">
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+  <p>
+    <a href="/all_recipes">Return to View All Recipes</a>
+  </p>
+</body>
+<footer>
+  <center>
+    <button><a href="/home">Home</a></button>
+  </center>
+</footer>
