@@ -37,12 +37,20 @@ end
 
 # Step 2: Save new recipe
 get "/save_new_recipe" do
-  binding.pry
-  recipe_to_add = Recipe.new({"name" => params['recipe']['name'], "recipe_type" => params['recipe']['recipe_type'], "time_to_make" => params['recipe']['time_to_make'], "information" => params['recipe']['information']})
+  recipe_to_add = Recipe.new({"name" => params['recipe']['name'], "recipe_type_id" => params['recipe']['recipe_type_id'], "time_to_make" => params['recipe']['time_to_make'], "information" => params['recipe']['information']})
 
-  erb :"recipes/success"
+  if recipe_to_add.add_to_database
+    erb :"recipes/success"
+  else
+    @error = true
+    erb :"recipes/add_recipe"
+  end
 end
 
 # ------------------------------------------------------------------------------
-# Adds a new recipe
+# Displays Recipe Information
 # ------------------------------------------------------------------------------
+get "/all_recipes/:id" do
+  @recipe = Recipe.find(params['recipe']['id'])
+  erb :"recipes/recipe_information"
+end

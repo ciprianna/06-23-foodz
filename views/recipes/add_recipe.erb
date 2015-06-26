@@ -29,7 +29,7 @@
         <h3><%= category.name %></h3>
         <% category.foods.each do |food| %>
             <li>
-              <label><input type="checkbox" value="<%= food.id %>"><%= food.name %></label>
+              <label><input type="checkbox" name="food[food_id][]" value="<%= food.id %>"><%= food.name %></label>
             </li>
           <% end %>
       <% end %>

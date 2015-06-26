@@ -7,14 +7,14 @@ class Recipe
   include DatabaseInstanceMethods
 
   attr_reader :id
-  attr_accessor :name, :recipe_type, :time_to_make, :information
+  attr_accessor :name, :recipe_type_id, :time_to_make, :information
 
   # Creates a new Recipe Object
   #
   # options - empty Hash
   #   - id (optional) - Integer, primary key
   #   - name (optional) - String, name for the Recipe
-  #   - recipe_type (optional) - Integer, foreign key from the recipe_types
+  #   - recipe_type_id (optional) - Integer, foreign key from the recipe_types
   #                               table
   #   - time_to_make (optional) - Integer, number of minutes it takes to make
   #                                 the recipe
@@ -24,19 +24,19 @@ class Recipe
   def initialize(options = {})
     @id = options["id"]
     @name = options["name"]
-    @recipe_type = options["recipe_type"]
+    @recipe_type_id = options["recipe_type_id"]
     @time_to_make = options["time_to_make"]
     @information = options["information"]
   end
 
   # Gives recipes within a certain recipe type
   #
-  # recipe_type - Integer, should match an id (primary key) from the
+  # recipe_type_id - Integer, should match an id (primary key) from the
   #                 recipe_types table
   #
   # Returns an Array of Recipe Objects
-  def where_recipe_type(recipe_type)
-    results = DATABASE.execute("SELECT * FROM recipes WHERE recipe_type_id = #{recipe_type};")
+  def where_recipe_type(recipe_type_id)
+    results = DATABASE.execute("SELECT * FROM recipes WHERE recipe_type_id = #{recipe_type_id};")
 
     store_results = []
 
@@ -76,7 +76,7 @@ class Recipe
   # Returns the Object if it was added to the database or false if it failed
   def add_to_database
     if self.valid?
-      Recipe.add({"name" => "#{self.name}", "recipe_type" => "#{self.recipe_type}", "time_to_make" => "#{self.time_to_make}", "information" => "#{self.information}"})
+      Recipe.add({"name" => "#{self.name}", "recipe_type_id" => "#{self.recipe_type_id}", "time_to_make" => "#{self.time_to_make}", "information" => "#{self.information}"})
     else
       false
     end
@@ -104,7 +104,7 @@ class Recipe
       valid = false
     end
 
-    if self.recipe_type.nil? || self.recipe_type == ""
+    if self.recipe_type_id.nil? || self.recipe_type_id == ""
       valid = false
     end
 

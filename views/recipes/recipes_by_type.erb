@@ -10,7 +10,7 @@
       <h3><%= type.name %></h3>
       <% type.recipes.each do |recipe| %>
           <li>
-            <a href="/all_recipes/:id"><b><%= recipe.id %></b> - <i><%= recipe.name %></i></a>, <b>Time to Make</b>: <%= recipe.time_to_make %>
+            <a href="/all_recipes/<% recipe.id %>"><b><%= recipe.id %></b> - <i><%= recipe.name %></i></a>, <b>Time to Make</b>: <%= recipe.time_to_make %>
           </li>
         <% end %>
     <% end %>
