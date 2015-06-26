@@ -44,6 +44,7 @@ class Food
   #
   # Returns the Object if it was added to the database or false if it failed
   def add_to_database
+    binding.pry
     if self.valid?
       Food.add({"name" => "#{self.name}", "category_id" => "#{self.category_id}"})
     else
@@ -77,11 +78,14 @@ class Food
       valid = false
     end
 
-    existing_food = DATABASE.execute("SELECT * FROM foods WHERE name = #{@name};")
-    if !existing_food.empty?
-      valid = false
+    names = DATABASE.execute("SELECT name FROM foods WHERE;")
+
+    names.each do |names|
+      if names["name"] == @name
+        valid = false
+      end
     end
-    
+
     return valid
   end
 

@@ -17,8 +17,9 @@ end
 #   - Create a Food Object using information entered in form
 #   - Runs the add_to_database method, running the validity check
 get "/save_new_food" do
-  @new_food = Food.new({"name" => params["foods"]["name"], "category_id" => params["foods"]["category_id"].to_i})
-  if @new_food.add_to_database
+  new_food = Food.new({"name" => params["foods"]["name"], "category_id" => params["foods"]["category_id"].to_i})
+
+  if new_food.add_to_database
     erb :"food/success"
   else
     @error = true
