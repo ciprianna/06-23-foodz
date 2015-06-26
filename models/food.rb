@@ -14,7 +14,7 @@ class Food
   # options - Empty Hash
   #   - id (optional) - Integer, primary key
   #   - name (optional) - String for the food name
-  #   - category (optional) - String for the food group/category
+  #   - category_id (optional) - String for the food group/category
   #
   # Returns a Food Object
   def initialize(options = {})

@@ -6,7 +6,7 @@
 </head>
 <body>
   <ul>
-    <% RecipeType.each do |type| %>
+    <% RecipeType.all.each do |type| %>
       <h3><%= type.name %></h3>
       <% type.recipes.each do |recipe| %>
           <li>

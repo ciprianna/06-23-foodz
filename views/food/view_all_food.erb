@@ -6,39 +6,39 @@
 </head>
 <body>
   <ul>
+    <h3>Grains</h3>
     <% Food.all.each do |food| %>
-      <% if food.category == 4 %>
-        <h3>Grains</h3>
+      <% if food.category_id == 4 %>
         <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
       <% end %>
     <% end %>
+    <h3>Proteins</h3>
     <% Food.all.each do |food| %>
-      <% if food.category == 5 %>
-        <h3>Proteins</h3>
+      <% if food.category_id == 5 %>
         <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
       <% end %>
     <% end %>
+    <h3>Dairy</h3>
     <% Food.all.each do |food| %>
-      <% if food.category == 1 %>
-        <h3>Dairy</h3>
+      <% if food.category_id == 1 %>
         <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
       <% end %>
     <% end %>
+    <h3>Fruits</h3>
     <% Food.all.each do |food| %>
-      <% if food.category == 3 %>
-        <h3>Fruits</h3>
+      <% if food.category_id == 3 %>
         <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
       <% end %>
     <% end %>
+    <h3>Vegetables</h3>
     <% Food.all.each do |food| %>
-      <% if food.category == 6 %>
-        <h3>Vegetables</h3>
+      <% if food.category_id == 6 %>
         <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
       <% end %>
     <% end %>
+    <h3>Fats/Oils</h3>
     <% Food.all.each do |food| %>
-      <% if food.category == 2 %>
-        <h3>Fats/Oils</h3>
+      <% if food.category_id == 2 %>
         <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
       <% end %>
     <% end %>

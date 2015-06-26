@@ -11,7 +11,7 @@ class FoodTest < Minitest::Test
 
     assert_equal(nil, pasta.id)
     assert_equal(nil, pasta.name)
-    assert_equal(nil, pasta.category)
+    assert_equal(nil, pasta.category_id)
   end
 
   # Test to ensure that valid method returns true if the object is valid and
@@ -24,14 +24,14 @@ class FoodTest < Minitest::Test
     pasta.name = "pasta"
     assert_equal(false, pasta.valid?)
 
-    pasta.category = 4
+    pasta.category_id = 4
     assert_equal(true, pasta.valid?)
 
     pasta.name = ""
     assert_equal(false, pasta.valid?)
 
     pasta.name = "pasta"
-    pasta.category = ""
+    pasta.category_id = ""
     assert_equal(false, pasta.valid?)
   end
 
