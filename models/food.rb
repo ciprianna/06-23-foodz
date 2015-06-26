@@ -78,7 +78,7 @@ class Food
       valid = false
     end
 
-    names = DATABASE.execute("SELECT name FROM foods WHERE;")
+    names = DATABASE.execute("SELECT name FROM foods;")
 
     names.each do |names|
       if names["name"] == @name
