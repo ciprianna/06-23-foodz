@@ -1,4 +1,4 @@
-<!-- View all recipes -->
+<!-- View recipe information -->
 <head>
   <h1><center>
     <%= @recipe.name %>
@@ -8,7 +8,14 @@
   <p>
     <h3>Food:</h3>
   </p>
-  
+  <ul>
+      <% @recipe.foods.each do |food| %>
+      <li>
+        <%= food["name"] %>
+      </li>
+      <% end  %>
+    </li>
+  </ul>
   <p>
     <h3>Instructions:</h3>
   </p>

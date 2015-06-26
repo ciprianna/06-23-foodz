@@ -108,7 +108,7 @@ class Recipe
   #
   # Returns the Object if saved or false if save failed
   def save_valid
-    if self.valid?
+    if self.valid_edits?
       self.save
     else
       false
@@ -143,6 +143,32 @@ class Recipe
       if names["name"] == @name
         valid = false
       end
+    end
+
+    return valid
+  end
+
+  # Utility method to determine if an Object contains valid fields or not
+  #   used only for edits so that it does not check for an existing name.
+  #
+  # Returns true/false Boolean
+  def valid_edits?
+    valid = true
+
+    if self.name.nil? || self.name == ""
+      valid = false
+    end
+
+    if self.recipe_type_id.nil? || self.recipe_type_id == ""
+      valid = false
+    end
+
+    if self.time_to_make.nil? || self.time_to_make == ""
+      valid = false
+    end
+
+    if self.information.nil? || self.information == ""
+      valid = false
     end
 
     return valid
