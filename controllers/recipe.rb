@@ -51,6 +51,21 @@ end
 # Displays Recipe Information
 # ------------------------------------------------------------------------------
 get "/all_recipes/:id" do
-  @recipe = Recipe.find(params['recipe']['id'])
+  @recipe = Recipe.find(params['id'])
   erb :"recipes/recipe_information"
 end
+
+# ------------------------------------------------------------------------------
+# Edit a recipe
+# ------------------------------------------------------------------------------
+# Step 1: Select a recipe to edit
+get "/edit_recipe" do
+  erb :"recipes/edit_recipe"
+end
+
+# Step 2: Display form to edit information
+get "/edit_recipe/:id" do
+  erb :"recipes/edit_recipe_form"
+end
+
+# Step 3: Save new information
