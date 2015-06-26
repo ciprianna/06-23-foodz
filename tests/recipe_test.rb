@@ -25,7 +25,7 @@ class RecipeTest < Minitest::Test
     new_recipe.name = "tacos"
     assert_equal(false, new_recipe.valid?)
 
-    new_recipe.recipe_type = 1
+    new_recipe.recipe_type_id = 1
     assert_equal(false, new_recipe.valid?)
 
     new_recipe.time_to_make = 20
@@ -38,10 +38,10 @@ class RecipeTest < Minitest::Test
     assert_equal(false, new_recipe.valid?)
 
     new_recipe.name = "tacos"
-    new_recipe.recipe_type = ""
+    new_recipe.recipe_type_id = ""
     assert_equal(false, new_recipe.valid?)
 
-    new_recipe.recipe_type = 2
+    new_recipe.recipe_type_id = 2
     new_recipe.time_to_make = ""
     assert_equal(false, new_recipe.valid?)
 

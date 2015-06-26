@@ -15,7 +15,7 @@
     <input type="text" name="recipe[name]" placeholder="Name of New Recipe">
     <p>
       <h3>Type of recipe:</h3>
-    <select name="recipe[recipe_type]">
+    <select name="recipe[recipe_type_id]">
       <% RecipeType.all.each do |type| %>
         <option value="<%= type.id %>"><%= type.name %></option>
       <% end %>
