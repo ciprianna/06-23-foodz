@@ -71,6 +71,17 @@ class Recipe
     return store_results
   end
 
+  # Stores food_id and recipe_id to the recipes_foods table
+  #
+  # food_ids - Array of food_id Integers; primary keys in the foods table
+  #
+  # Returns
+  def add_to_bridge(food_ids)
+    food_ids.each do |food_id|
+      DATABASE.execute("INSERT INTO recipes_foods (recipe_id, food_id) VALUES (#{self.id}, food_id);")
+    end
+  end
+
   # Adds a new Object to the database if it has valid fields
   #
   # Returns the Object if it was added to the database or false if it failed
