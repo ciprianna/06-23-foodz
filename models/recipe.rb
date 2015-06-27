@@ -53,11 +53,11 @@ class Recipe
   #         of either "quick", "hour", or "long"
   #
   # Returns an Array of Objects
-  def where_time(time)
+  def self.where_time(time)
     if time == "quick"
-      results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make >= 30;")
+      results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make <= 30;")
     elsif time == "hour"
-      results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make > 30 AND WHERE time_to_make <= 65;")
+      results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make > 30 AND time_to_make <= 65;")
     elsif time == "long"
       results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make > 65;")
     end
