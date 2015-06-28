@@ -56,7 +56,8 @@ class Food
   #
   # food_ids - Array of id's for Food Objects, Integers
   #
-  # Returns an Array of Recipe Objects
+  # Returns a Hash - keys are recipe_ids (Integers) and values are percentages
+  #   of ingredients that the user has available to use
   def self.recipes(food_ids)
     for_sql = food_ids.join(", ")
     results = DATABASE.execute("SELECT * FROM recipes_foods WHERE food_id IN (#{for_sql});")
