@@ -110,6 +110,13 @@ class Food
     return counts
   end
 
+  # Selects all foods in a recipe (called on a Recipe Object!)
+  #
+  # Returns an Array of Hashes
+  def foods
+    results = DATABASE.execute("SELECT foods.name FROM foods JOIN recipes_foods ON foods.id = recipes_foods.food_id WHERE recipes_foods.recipe_id = #{self.id};")
+  end
+
   # Ensures that an updated Food Object has a valid name and food group before
   #   saving
   #

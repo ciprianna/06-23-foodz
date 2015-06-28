@@ -101,13 +101,6 @@ class Recipe
     return food_ids
   end
 
-  # Selects all foods in a recipe
-  #
-  # Returns an Array of Hashes
-  def foods
-    results = DATABASE.execute("SELECT foods.name FROM foods JOIN recipes_foods ON foods.id = recipes_foods.food_id WHERE recipes_foods.recipe_id = #{self.id};")
-  end
-
   # Utility method - collects the number of ingredients a recipe takes
   #
   # counts - Hash with recipe_ids from recipes_foods table
