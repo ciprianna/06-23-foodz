@@ -107,7 +107,7 @@ class Recipe
   #
   # Returns a Hash with recipe_ids (Integers) as keys and total ingredients used
   #   as values (Integers)
-  def ingredients(counts)
+  def self.ingredients(counts)
     recipe_ingredients = Hash.new 0
     counts.each do |key, value|
       x = DATABASE.execute("SELECT * FROM recipes_foods WHERE recipe_id = #{key};")
@@ -126,7 +126,7 @@ class Recipe
   #
   # Returns a Hash with recipe_ids (Integers) and percentage of ingredients
   # (Floats) that the user has available as the values
-  def percentage_of_ingredients(recipe_ingredients, counts)
+  def self.percentage_of_ingredients(recipe_ingredients, counts)
     in_order = {}
     recipe_ingredients.each do |rid, ings|
       x = counts[rid].to_f / ings

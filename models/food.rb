@@ -44,7 +44,6 @@ class Food
   #
   # Returns the Object if it was added to the database or false if it failed
   def add_to_database
-    binding.pry
     if self.valid?
       Food.add({"name" => "#{self.name}", "category_id" => "#{self.category_id}"})
     else
@@ -59,8 +58,11 @@ class Food
   # Returns a Hash - keys are recipe_ids (Integers) and values are percentages
   #   of ingredients that the user has available to use
   def self.recipes(food_ids)
-    store_recipes = match_foods(food_ids)
-    counts = get_counts(store_recipes)
+    store_recipes = Food.match_foods(food_ids)
+    counts = Food.get_counts(store_recipes)
+    recipe_ingredients = Recipe.ingredients(counts)
+    in_order = Recipe.percentage_of_ingredients(recipe_ingredients, counts)
+    return in_order
   end
 
   # Matches selected foods to recipes in the recipes_foods table
@@ -68,7 +70,7 @@ class Food
   # food_ids - Array of id's (Integers) for Food Objects
   #
   # Returns an Array of recipe_ids from the bridge table
-  def match_foods(food_ids)
+  def self.match_foods(food_ids)
     for_sql = food_ids.join(", ")
     results = DATABASE.execute("SELECT * FROM recipes_foods WHERE food_id IN (#{for_sql});")
 
@@ -86,7 +88,7 @@ class Food
   #
   # Returns a Hash with recipe_id's (Integer) for the keys and the values are
   #   Integers indicating the number of user ingredients the recipe uses
-  def get_counts(store_recipes)
+  def self.get_counts(store_recipes)
     counts = Hash.new 0
     store_recipes.each do |id|
       counts[id] += 1
