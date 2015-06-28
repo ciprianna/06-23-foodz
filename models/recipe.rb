@@ -80,18 +80,25 @@ class Recipe
     recipe = DATABASE.execute("SELECT * FROM recipes_foods WHERE recipe_id = #{self.id};")
 
     if recipe.nil?
-      food_ids.each do |f_id|
-        food_ids_for_sql = f_id.to_i
-        DATABASE.execute("INSERT INTO recipes_foods (recipe_id, food_id) VALUES (#{self.id}, #{food_ids_for_sql});")
-      end
+      Recipe.insert_foods(food_ids)
     else
       DATABASE.execute("DELETE FROM recipes_foods WHERE recipe_id = #{self.id}")
-      food_ids.each do |f_id|
-        food_ids_for_sql = f_id.to_i
-        DATABASE.execute("INSERT INTO recipes_foods (recipe_id, food_id) VALUES (#{self.id}, #{food_ids_for_sql});")
-      end
+      Recipe.insert_foods(food_ids)
     end
     return self
+  end
+
+  # Utility method for inserting information into recipes_foods table
+  #
+  # food_ids - Array of food_id Integers; primary keys in the foods table
+  #
+  # Returns the Array of food_ids
+  def self.insert_foods(food_ids)
+    food_ids.each do |f_id|
+      food_ids_for_sql = f_id.to_i
+      DATABASE.execute("INSERT INTO recipes_foods (recipe_id, food_id) VALUES (#{self.id}, #{food_ids_for_sql});")
+    end
+    return food_ids
   end
 
   # Selects all foods in a recipe
