@@ -101,6 +101,41 @@ class Recipe
     results = DATABASE.execute("SELECT foods.name FROM foods JOIN recipes_foods ON foods.id = recipes_foods.food_id WHERE recipes_foods.recipe_id = #{self.id};")
   end
 
+  # Utility method - collects the number of ingredients a recipe takes
+  #
+  # counts - Hash with recipe_ids from recipes_foods table
+  #
+  # Returns a Hash with recipe_ids (Integers) as keys and total ingredients used
+  #   as values (Integers)
+  def ingredients(counts)
+    recipe_ingredients = Hash.new 0
+    counts.each do |key, value|
+      x = DATABASE.execute("SELECT * FROM recipes_foods WHERE recipe_id = #{key};")
+      recipe_ingredients[key] = x.length
+    end
+    return recipe_ingredients
+  end
+
+  # Utility method - Returns the percentage of user selected ingredients out of
+  #   total ingredients a recipe uses
+  #
+  # recipe_ingredients - Hash with recipe_ids (Integers) as keys and number of
+  #                       recipe ingredients needed as the value (Integer)
+  # counts - Hash with recipe_ids (Integers) as keys and number of user-selected
+  #           ingredients as values (Integers)
+  #
+  # Returns a Hash with recipe_ids (Integers) and percentage of ingredients
+  # (Floats) that the user has available as the values
+  def percentage_of_ingredients(recipe_ingredients, counts)
+    in_order = {}
+    recipe_ingredients.each do |rid, ings|
+      x = counts[rid].to_f / ings
+      in_order[rid] = x
+    end
+
+    return in_order
+  end
+
   # Adds a new Object to the database if it has valid fields
   #
   # Returns the Object if it was added to the database or false if it failed
