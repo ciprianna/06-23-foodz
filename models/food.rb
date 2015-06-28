@@ -52,6 +52,41 @@ class Food
     end
   end
 
+  # Shows all recipes that match the selected foods
+  #
+  # food_ids - Array of id's for Food Objects, Integers
+  #
+  # Returns an Array of Recipe Objects
+  def self.recipes(food_ids)
+    for_sql = food_ids.join(", ")
+    results = DATABASE.execute("SELECT * FROM recipes_foods WHERE food_id IN (#{for_sql});")
+
+    store_recipes = []
+    results.each do |hash|
+      store_recipes << hash["recipe_id"]
+    end
+
+    counts = Hash.new 0
+    store_recipes.each do |id|
+      counts[id] += 1
+    end
+
+    recipe_ingredients = Hash.new 0
+    counts.each do |key, value|
+      x = DATABASE.execute("SELECT * FROM recipes_foods WHERE recipe_id = #{key};")
+      recipe_ingredients[key] = x.length
+    end
+
+    in_order = {}
+    recipe_ingredients.each do |rid, ings|
+      x = counts[rid].to_f / ings
+      in_order[rid] = x
+    end
+
+    return in_order
+
+  end
+
   # Ensures that an updated Food Object has a valid name and food group before
   #   saving
   #
@@ -89,18 +124,4 @@ class Food
     return valid
   end
 
-  # CRUD
-  # ------
-  # Create
-  #   - initialize (Class)
-  #   - add_to_database (Instance)
-  #   - "extend" add method (Class)
-  # Read
-  #   - where_category (Class)
-  #   - "extend" all method (Class)
-  # Update
-  #   - valid_save (Instance)
-  #   - "include" save method (Instance)
-  # Delete
-  #   - "include" delete method (Instance)
 end

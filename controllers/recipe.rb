@@ -91,3 +91,10 @@ get "/save_edited_recipe" do
     erb :"recipes/edit_recipe_form"
   end
 end
+
+# ------------------------------------------------------------------------------
+# Display recipes from foods selected by users
+# ------------------------------------------------------------------------------
+# Step 1: Display the form, handled in the food controller.
+
+# Step 2: Display 
