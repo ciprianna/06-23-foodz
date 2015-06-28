@@ -41,13 +41,7 @@ get "/get_recipes" do
     erb :"food/select_food"
   else
     list = params["foods"]["food_id"]
-
-    @food_list = []
-    list.each do |food|
-      food = Food.find(food)
-      @food_list << food.name
-    end
-
+    @food_list = Food.get_names(list)
     @recipes_percentages = Food.recipes(params["foods"]["food_id"])
     recipe_ids = @recipes_percentages.keys
     @recipes_to_make = Recipe.get_names(recipe_ids)

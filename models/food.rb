@@ -51,6 +51,20 @@ class Food
     end
   end
 
+  # Gets food names
+  #
+  # list - Array of food_ids (Integer) from recipes_foods
+  #
+  # Returns an Array of food names (Strings)
+  def self.get_names(list)
+    food_list = []
+    list.each do |food|
+      food = Food.find(food)
+      food_list << food.name
+    end
+    return food_list
+  end
+
   # Shows all recipes that match the selected foods
   #
   # food_ids - Array of id's for Food Objects, Integers
