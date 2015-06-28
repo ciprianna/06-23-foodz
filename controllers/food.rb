@@ -34,5 +34,13 @@ end
 get "/select_food" do
   erb :"food/select_food"
 end
-# Step 2: Send the form to a save file in the recipes section
-#   Route handler in the controller recipe file.
+# Step 2: Display the recipes that the user can make
+get "/get_recipes" do
+  if params["foods"].nil?
+    @error = true
+    erb :"food/select_food"
+  else
+    @recipes_to_make = Foods.recipes(params["foods"]["food_id"])
+    erb :"food/get_recipes"
+  end
+end
