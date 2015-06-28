@@ -1,3 +1,8 @@
+<!-- Error Message to display if the new recipe type cannot be added -->
+<% if @error %>
+  <h3>Please select food to generate recipes</h3>
+<% end %>
+
 <!-- Select available food items -->
 <head>
   <h1><center>
@@ -10,42 +15,44 @@
     <h3>Grains</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 4 %>
-        <label><input type="checkbox" name="foods[food_id]" value="<%= food.id %>"><%= food.name %></label>
+        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
       <% end %>
     <% end %>
     <h3>Proteins</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 5 %>
-        <label><input type="checkbox" name="foods[food_id]" value="<%= food.id %>"><%= food.name %></label>
+        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
       <% end %>
     <% end %>
     <h3>Dairy</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 1 %>
-        <label><input type="checkbox" name="foods[food_id]" value="<%= food.id %>"><%= food.name %></label>
+        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
       <% end %>
     <% end %>
     <h3>Fruits</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 3 %>
-        <label><input type="checkbox" name="foods[food_id]" value="<%= food.id %>"><%= food.name %></label>
+        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
       <% end %>
     <% end %>
     <h3>Vegetables</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 6 %>
-        <label><input type="checkbox" name="foods[food_id]" value="<%= food.id %>"><%= food.name %></label>
+        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
       <% end %>
     <% end %>
     <h3>Fats/Oils</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 2%>
-        <label><input type="checkbox" name="foods[food_id]" value="<%= food.name %>"><%= food.name %><label>
+        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.name %>"><%= food.name %><label>
       <% end %>
     <% end %>
-    <p>
+    <center>
+      <p>
       <input type="submit">
     </p>
+    </center>
   </form>
 </body>
 <footer>

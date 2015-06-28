@@ -112,6 +112,17 @@ class Recipe
     end
   end
 
+  # Retrieves names of the recipes
+  #
+  # recipe_id - Integer, matches the primary key in recipes table
+  #
+  # Returns a table of ids - names
+  def self.get_names(recipe_id)
+    for_sql = recipe_id.join(", ")
+    recipe_names = DATABASE.execute("SELECT DISTINCT recipes.name, recipes_foods.recipe_id FROM recipes JOIN recipes_foods ON recipes.id = recipes_foods.recipe_id WHERE recipes_foods.recipe_id IN (#{for_sql});")
+    return recipe_names
+  end
+
   # Ensures that an updated Recipe Object has a valid name and type before
   #   saving
   #
