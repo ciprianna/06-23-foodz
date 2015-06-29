@@ -1,10 +1,6 @@
 <!-- View all recipe types -->
-<head>
-  <h1><center>
-    Recipe Types
-  </center></h1>
-</head>
 <body>
+  <h1>Recipe Types</h1>
   <ul>
     <% RecipeType.all.each do |type| %>
       <li>
@@ -16,8 +12,3 @@
     <a href="/add_recipe_type">Add new recipe type</a>
   </p>
 </body>
-<footer>
-  <center>
-    <button><a href="/home">Home</a></button>
-  </center>
-</footer>
