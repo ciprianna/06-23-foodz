@@ -4,12 +4,8 @@
 <% end %>
 
 <!-- Select available food items -->
-<head>
-  <h1><center>
-    Select Available Food Items
-  </center></h1>
-</head>
 <body>
+  <h2>Select Available Food Items</h2>
   <form action="/get_recipes">
     <h3>Grains</h3>
     <% Food.all.each do |food| %>
@@ -54,8 +50,3 @@
     </center>
   </form>
 </body>
-<footer>
-  <center>
-    <button><a href="/home">Home</a></button>
-  </center>
-</footer>
