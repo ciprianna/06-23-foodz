@@ -4,12 +4,11 @@
 <% end %>
 
 <!-- Add new recipe -->
-<head>
-  <h1><center>
-    Add New Recipe
-  </center></h1>
-</head>
 <body>
+  <nav>
+    <button><a href="/all_recipes">Return to View All Recipes</a></button>
+  </nav>
+  <h2>Add New Recipe</h2>
   <form action="/save_new_recipe">
     <h3>What's the name of your recipe?</h3>
     <input type="text" name="recipe[name]" placeholder="Name of New Recipe">
@@ -43,12 +42,4 @@
       <input type="submit">
     </p>
   </form>
-  <p>
-    <a href="/all_recipes">Return to View All Recipes</a>
-  </p>
 </body>
-<footer>
-  <center>
-    <button><a href="/home">Home</a></button>
-  </center>
-</footer>

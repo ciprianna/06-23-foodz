@@ -1,10 +1,9 @@
 <!-- View Recipes by Type -->
-<head>
-  <h1><center>
-    Recipes
-  </center></h1>
-</head>
 <body>
+  <nav>
+    <a href="/all_recipes">Return to All Recipes</a>
+  </nav>
+  <h2>Recipes</h2>
   <ul>
     <% RecipeType.all.each do |type| %>
       <h3><%= type.name %></h3>
@@ -15,12 +14,4 @@
         <% end %>
     <% end %>
   </ul>
-  <p>
-    <a href="/all_recipes">Return to All Recipes</a>
-  </p>
 </body>
-<footer>
-  <center>
-    <button><a href="/home">Home</a></button>
-  </center>
-</footer>

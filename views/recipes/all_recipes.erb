@@ -1,10 +1,12 @@
 <!-- View all recipes -->
-<head>
-  <h1><center>
-    Recipes
-  </center></h1>
-</head>
 <body>
+  <nav>
+    <button><a href="/recipes_by_type">View recipes by type</a></button>
+    <button><a href="/recipes_by_time">View recipes by time to make</a></button>
+    <button><a href="/add_recipe">Add new recipe</a></button>
+    <button><a href="/edit_recipe">Edit a recipe</a></button>
+  </nav>
+  <h2>Recipes</h2>
   <ul>
     <% Recipe.all.each do |recipe| %>
       <li>
@@ -12,21 +14,4 @@
       </li>
     <% end %>
   </ul>
-  <p>
-    <a href="/recipes_by_type">View recipes by type</a>
-  </p>
-  <p>
-    <a href="/recipes_by_time">View recipes by time to make</a>
-  </p>
-  <p>
-    <a href="/add_recipe">Add new recipe</a>
-  </p>
-  <p>
-    <a href="/edit_recipe">Edit a recipe</a>
-  </p>
 </body>
-<footer>
-  <center>
-    <button><a href="/home">Home</a></button>
-  </center>
-</footer>

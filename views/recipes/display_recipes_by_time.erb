@@ -1,14 +1,15 @@
 <!-- View Recipes by Time -->
-<head>
-  <h1><center>
+<body>
+  <nav>
+    <button><a href="/all_recipes">Return to All Recipes</a></button>
+  </nav>
+  <h2>
     Recipes that are <% if params["recipes"]["time"] == "hour" %>
     around an <%= params["recipes"]["time"] %>
     <% else %>
     <%= params["recipes"]["time"] %>
     <% end %>
-  </center></h1>
-</head>
-<body>
+  </h2>
   <ul>
     <% @recipes_to_show.each do |recipe| %>
     <li>
@@ -16,12 +17,4 @@
     </li>
     <% end %>
   </ul>
-  <p>
-    <a href="/all_recipes">Return to All Recipes</a>
-  </p>
 </body>
-<footer>
-  <center>
-    <button><a href="/home">Home</a></button>
-  </center>
-</footer>

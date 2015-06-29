@@ -1,10 +1,9 @@
 <!-- View all recipes -->
-<head>
-  <h1><center>
-    Choose a Recipe to Edit
-  </center></h1>
-</head>
 <body>
+  <nav>
+    <a href="/all_recipes">Return to View All Recipes</a>
+  </nav>
+  <h2>Choose a Recipe to Edit</h2>
   <ul>
     <% Recipe.all.each do |recipe| %>
       <li>
@@ -12,12 +11,4 @@
       </li>
     <% end %>
   </ul>
-  <p>
-    <a href="/all_recipes">Return to View All Recipes</a>
-  </p>
 </body>
-<footer>
-  <center>
-    <button><a href="/home">Home</a></button>
-  </center>
-</footer>

@@ -1,10 +1,9 @@
 <!-- View recipe information -->
-<head>
-  <h1><center>
-    <%= @recipe.name %>
-  </center></h1>
-</head>
 <body>
+  <nav>
+    <a href="/all_recipes">Return to View All Recipes</a>
+  </nav>
+  <h2><%= @recipe.name %></h2>
   <p>
     <h3>Food:</h3>
   </p>
@@ -20,12 +19,4 @@
     <h3>Instructions:</h3>
   </p>
   <%= @recipe.information %>
-  <p>
-    <a href="/all_recipes">Return to View All Recipes</a>
-  </p>
 </body>
-<footer>
-  <center>
-    <button><a href="/home">Home</a></button>
-  </center>
-</footer>

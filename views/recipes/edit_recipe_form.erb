@@ -4,12 +4,11 @@
 <% end %>
 
 <!-- Edit recipe -->
-<head>
-  <h1><center>
-    Change desired information, then click "submit"
-  </center></h1>
-</head>
 <body>
+  <nav>
+    <a href="/all_recipes">Return to View All Recipes</a>
+  </nav>
+  <h2>Change desired information, then click "submit"</h2>
   <form action="/save_edited_recipe">
     <h3>Recipe Name</h3>
     <input type="text" name="recipe[name]" placeholder="Name of New Recipe" value="<%= @recipe_to_change.name %>">
@@ -48,12 +47,4 @@
       <input type="submit">
     </p>
   </form>
-  <p>
-    <a href="/all_recipes">Return to View All Recipes</a>
-  </p>
 </body>
-<footer>
-  <center>
-    <button><a href="/home">Home</a></button>
-  </center>
-</footer>
