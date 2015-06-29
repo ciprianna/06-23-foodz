@@ -1,0 +1,21 @@
+html {
+  box-sizing: border-box;
+    background: #FFEEB2;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+nav button {
+  width: 100%;
+  background-color: #AAA062;
+  font-size: 16pt;
+  font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+  font-weight: bold;
+  border: solid #2F2B08;
+  border-radius: 5pt;
+}
