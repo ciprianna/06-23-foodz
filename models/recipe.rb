@@ -71,6 +71,13 @@ class Recipe
     return store_results
   end
 
+  # Selects all foods in a recipe
+  #
+  # Returns an Array of Hashes
+  def foods
+    results = DATABASE.execute("SELECT foods.name FROM foods JOIN recipes_foods ON foods.id = recipes_foods.food_id WHERE recipes_foods.recipe_id = #{self.id};")
+  end
+
   # Stores food_id and recipe_id to the recipes_foods table
   #
   # food_ids - Array of food_id Integers; primary keys in the foods table
@@ -80,10 +87,10 @@ class Recipe
     recipe = DATABASE.execute("SELECT * FROM recipes_foods WHERE recipe_id = #{self.id};")
 
     if recipe.nil?
-      Recipe.insert_foods(food_ids)
+      self.insert_foods(food_ids)
     else
       DATABASE.execute("DELETE FROM recipes_foods WHERE recipe_id = #{self.id}")
-      Recipe.insert_foods(food_ids)
+      self.insert_foods(food_ids)
     end
     return self
   end
@@ -93,7 +100,7 @@ class Recipe
   # food_ids - Array of food_id Integers; primary keys in the foods table
   #
   # Returns the Array of food_ids
-  def self.insert_foods(food_ids)
+  def insert_foods(food_ids)
     food_ids.each do |f_id|
       food_ids_for_sql = f_id.to_i
       DATABASE.execute("INSERT INTO recipes_foods (recipe_id, food_id) VALUES (#{self.id}, #{food_ids_for_sql});")

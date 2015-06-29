@@ -51,7 +51,6 @@ module DatabaseInstanceMethods
     end
 
     for_sql = individual_instance_variables.join(', ')
-
     DATABASE.execute("UPDATE #{table} SET #{for_sql} WHERE id = #{self.id}")
 
     return self

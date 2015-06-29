@@ -39,7 +39,6 @@ end
 get "/save_new_recipe" do
   recipe_to_add = Recipe.new({"name" => params['recipe']['name'], "recipe_type_id" => params['recipe']['recipe_type_id'].to_i, "time_to_make" => params['recipe']['time_to_make'].to_i, "information" => params['recipe']['information']})
 
-
   add_recipe = recipe_to_add.add_to_database
   if !add_recipe == false
     add_recipe.add_to_bridge(params["food"]["food_id"])
