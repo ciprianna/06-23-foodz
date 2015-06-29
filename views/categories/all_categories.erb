@@ -1,18 +1,15 @@
 <!-- View all food categories -->
-<head>
-  <h1><center>
-    Categories
-  </center></h1>
-</head>
-<body>
-  <ul>
-    <% Category.all.each do |category| %>
-      <li>
-        <b><%= category.id %></b> - <i><%= category.name %></i>
-      </li>
-    <% end %>
-  </ul>
-</body>
+
+
+<h2>Categories</h2>
+<ul>
+  <% Category.all.each do |category| %>
+    <li>
+      <b><%= category.id %></b> - <i><%= category.name %></i>
+    </li>
+  <% end %>
+</ul>
+
 <footer>
   <center>
     <button><a href="/home">Home</a></button>
