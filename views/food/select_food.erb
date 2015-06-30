@@ -39,8 +39,8 @@
     <% end %>
     <h3>Fats/Oils</h3>
     <% Food.all.each do |food| %>
-      <% if food.category_id == 2%>
-        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.name %>"><%= food.name %><label>
+      <% if food.category_id == 2 %>
+        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.name %>"><%= food.name %></label>
       <% end %>
     <% end %>
     <center>

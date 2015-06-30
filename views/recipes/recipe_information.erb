@@ -1,7 +1,7 @@
 <!-- View recipe information -->
 <body>
   <nav>
-    <a href="/all_recipes">Return to View All Recipes</a>
+    <button><a href="/all_recipes">Return to View All Recipes</a></button>
   </nav>
   <h2><%= @recipe.name %></h2>
   <p>
@@ -18,5 +18,7 @@
   <p>
     <h3>Instructions:</h3>
   </p>
-  <%= @recipe.information %>
+  <p>
+    <%= @recipe.information %>
+  </p>
 </body>

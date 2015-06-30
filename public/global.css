@@ -56,6 +56,11 @@ h3 {
   text-align: left;
 }
 
+p {
+  font-size: 12pt;
+  font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+}
+
 button a {
   text-decoration: none;
   color: black;
@@ -80,13 +85,30 @@ a:active {
 form p {
   font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
 }
+
 form input {
   border: #4A0112 solid;
   border-radius: 5pt;
   background-color: beige;
   width: 200pt;
   height: 20pt;
-  font-size: 14pt
+  font-size: 14pt;
+}
+
+form label {
+  font-size: 14pt;
+  font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+  width: 80%;
+  display: block;
+  margin: auto;
+}
+
+label input {
+  width: 20pt;
+}
+
+form label:hover {
+  font-weight: bold;
 }
 
 .submit {
@@ -122,4 +144,20 @@ form select {
 .error {
   color: crimson;
   font-style: italic;
+}
+
+form ul {
+  list-style-type: none;
+}
+
+form textarea {
+  border: #4A0112 solid;
+  border-radius: 5pt;
+  background-color: beige;
+  font-size: 14pt;
+  width: 100%
+}
+
+p a {
+  color: #7A1F04;
 }
