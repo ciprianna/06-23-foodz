@@ -1,6 +1,6 @@
 <!-- Error Message to display if the new food cannot be added -->
 <% if @error %>
-  <h3>Cannot add food: Missing information or duplicate value</h3>
+  <h3 class="error">Cannot add food: Missing information or duplicate value</h3>
 <% end %>
 
 <!-- Add new food item -->
@@ -21,7 +21,7 @@
     </select>
     </p>
     <p>
-      <input type="submit">
+      <input type="submit" class="submit">
     </p>
   </form>
 </body>

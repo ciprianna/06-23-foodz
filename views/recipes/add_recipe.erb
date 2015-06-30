@@ -1,6 +1,6 @@
 <!-- Error Message to display if the new recipe cannot be added -->
 <% if @error %>
-  <h3>Cannot add recipe: Missing information</h3>
+  <h3 class="error">Cannot add recipe: Missing information</h3>
 <% end %>
 
 <!-- Add new recipe -->
@@ -39,7 +39,7 @@
     <p>Recipe Instructions:</p>
       <textarea name="recipe[information]" rows="20" cols="75" placeholder="Enter recipe instructions here:"></textarea>
     <p>
-      <input type="submit">
+      <input type="submit" class="submit">
     </p>
   </form>
 </body>

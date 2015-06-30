@@ -76,3 +76,50 @@ a:hover {
 a:active {
   color: #AD8A37;
 }
+
+form p {
+  font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+}
+form input {
+  border: #4A0112 solid;
+  border-radius: 5pt;
+  background-color: beige;
+  width: 200pt;
+  height: 20pt;
+  font-size: 14pt
+}
+
+.submit {
+  border: #4A0112 solid;
+  border-radius: 30pt;
+  width: 100pt;
+  height: 25pt;
+  background-color: #4A0112;
+  color: beige;
+  font-weight: bold;
+  font-size: 14pt;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.submit:hover {
+  cursor: pointer;
+  background-color: tan
+}
+
+.submit:active {
+  color: black
+}
+
+form select {
+  border: solid #4A0112;
+  border-radius: 5pt;
+  background-color: beige;
+  font-size: 12pt;
+}
+
+.error {
+  color: crimson;
+  font-style: italic;
+}

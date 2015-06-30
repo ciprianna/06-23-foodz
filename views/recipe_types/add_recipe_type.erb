@@ -1,6 +1,6 @@
 <!-- Error Message to display if the new recipe type cannot be added -->
 <% if @error %>
-  <h3>Cannot add recipe type: Missing information</h3>
+  <h3 class="error">Cannot add recipe type: Missing information</h3>
 <% end %>
 
 <!-- Add new recipe type -->
@@ -8,7 +8,7 @@
   <h2>Add New Recipe Type</h2>
   <form action="/save_new_recipe_type">
     <input type="text" name="recipetype[name]" placeholder="Name of New Recipe Type">
-    <input type="submit">
+    <input type="submit" class="submit">
   </form>
   <p>
     <a href="/view_recipe_types">Return to View All Recipe Types</a>

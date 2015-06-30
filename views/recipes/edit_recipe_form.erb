@@ -1,6 +1,6 @@
 <!-- Error Message to display if the new recipe cannot be added -->
 <% if @error %>
-  <h3>Cannot change recipe: Missing information</h3>
+  <h3 class="error">Cannot change recipe: Missing information</h3>
 <% end %>
 
 <!-- Edit recipe -->
@@ -44,7 +44,7 @@
       <textarea name="recipe[information]" rows="20" cols="75" placeholder="Enter recipe instructions here:"><%= @recipe_to_change.information %></textarea>
       <input type="hidden" name="recipe[id]" value="<%= params['id'] %>">
     <p>
-      <input type="submit">
+      <input type="submit" class="submit">
     </p>
   </form>
 </body>
