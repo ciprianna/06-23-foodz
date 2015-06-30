@@ -5,13 +5,7 @@
 <ul>
   <% Category.all.each do |category| %>
     <li>
-      <b><%= category.id %></b> - <i><%= category.name %></i>
+      <i><%= category.name %></i>
     </li>
   <% end %>
 </ul>
-
-<footer>
-  <center>
-    <button><a href="/home">Home</a></button>
-  </center>
-</footer>

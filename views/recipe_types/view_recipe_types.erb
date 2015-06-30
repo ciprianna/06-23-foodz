@@ -1,14 +1,14 @@
 <!-- View all recipe types -->
 <body>
-  <h1>Recipe Types</h1>
+  <nav>
+    <button><a href="/add_recipe_type">Add new recipe type</a></button>
+  </nav>
+  <h2>Recipe Types</h2>
   <ul>
     <% RecipeType.all.each do |type| %>
       <li>
-        <b><%= type.id %></b> - <i><%= type.name %></i>
+        <i><%= type.name %></i>
       </li>
     <% end %>
   </ul>
-  <p>
-    <a href="/add_recipe_type">Add new recipe type</a>
-  </p>
 </body>
