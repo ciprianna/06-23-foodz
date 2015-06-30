@@ -1,45 +1,45 @@
 <!-- View all food items -->
 <body>
+  <nav>
+    <button><a href="/add_food">Add new food</a></button>
+  </nav>
   <h2>View All Food</h2>
   <ul>
     <h3>Grains</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 4 %>
-        <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
+        <li><i><%= food.name %></i></li>
       <% end %>
     <% end %>
     <h3>Proteins</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 5 %>
-        <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
+        <li><i><%= food.name %></i></li>
       <% end %>
     <% end %>
     <h3>Dairy</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 1 %>
-        <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
+        <li><i><%= food.name %></i></li>
       <% end %>
     <% end %>
     <h3>Fruits</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 3 %>
-        <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
+        <li><i><%= food.name %></i></li>
       <% end %>
     <% end %>
     <h3>Vegetables</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 6 %>
-        <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
+        <li><i><%= food.name %></i></li>
       <% end %>
     <% end %>
     <h3>Fats/Oils</h3>
     <% Food.all.each do |food| %>
       <% if food.category_id == 2 %>
-        <li><b><%= food.id %></b> - <i><%= food.name %></i></li>
+        <li><i><%= food.name %></i></li>
       <% end %>
     <% end %>
   </ul>
-  <p>
-    <a href="/add_food">Add new food</a>
-  </p>
 </body>

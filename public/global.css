@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-    background: #FFEEB2;
+    background: #B7CC72;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -12,10 +12,59 @@ body {
 
 nav button {
   width: 100%;
-  background-color: #AAA062;
+  background-color: #AD8A37;
   font-size: 16pt;
   font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
   font-weight: bold;
-  border: solid #2F2B08;
+  border: solid #260710;
   border-radius: 5pt;
+  cursor: pointer;
+}
+
+hr {
+  border: solid #2F2B08;
+  margin: 1pt;
+}
+
+h1 {
+  font-size: 24pt;
+  font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 5pt
+}
+
+h2 {
+  font-size: 20pt;
+  font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+  font-weight: bold;
+  text-align: left;
+}
+
+h3 {
+  font-size: 16pt;
+  font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+  font-weight: bold;
+  text-align: left;
+}
+
+button a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+}
+
+li a {
+  color: #7A1F04;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+a:active {
+  color: #AD8A37;
 }
