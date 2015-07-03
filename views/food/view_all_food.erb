@@ -1,45 +1,67 @@
 <!-- View all food items -->
 <body>
-  <nav>
-    <button><a href="/add_food">Add new food</a></button>
-  </nav>
-  <h2>View All Food</h2>
-  <ul>
-    <h3>Grains</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 4 %>
-        <li><i><%= food.name %></i></li>
+
+  <div id="home">
+    <nav>
+      <button><a href="/home" class="button_links_sidebar">Home</a></button>
+      <button><a href="/view_all_food" class="button_links_sidebar">View All Food</a></button>
+      <button><a href="/select_food" class="button_links_sidebar">Select the Food You Have</a></button>
+      <button><a href="/all_recipes" class="button_links_sidebar">View All Recipes</a></button>
+      <button><a href="/view_recipe_types" class="button_links_sidebar">View Recipe Types</a></button>
+      <button><a href="/all_categories" class="button_links_sidebar">View Food Categories</a></button>
+    </nav>
+    <div style="clear: both">
+    </div>
+  </div>
+
+  <div class="other_half">
+    <h2>View All Food</h2>
+    <ul>
+      <h3>Grains</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 4 %>
+          <li><i><%= food.name %></i></li>
+        <% end %>
       <% end %>
-    <% end %>
-    <h3>Proteins</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 5 %>
-        <li><i><%= food.name %></i></li>
+      <h3>Proteins</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 5 %>
+          <li><i><%= food.name %></i></li>
+        <% end %>
       <% end %>
-    <% end %>
-    <h3>Dairy</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 1 %>
-        <li><i><%= food.name %></i></li>
+      <h3>Dairy</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 1 %>
+          <li><i><%= food.name %></i></li>
+        <% end %>
       <% end %>
-    <% end %>
-    <h3>Fruits</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 3 %>
-        <li><i><%= food.name %></i></li>
+      <h3>Fruits</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 3 %>
+          <li><i><%= food.name %></i></li>
+        <% end %>
       <% end %>
-    <% end %>
-    <h3>Vegetables</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 6 %>
-        <li><i><%= food.name %></i></li>
+      <h3>Vegetables</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 6 %>
+          <li><i><%= food.name %></i></li>
+        <% end %>
       <% end %>
-    <% end %>
-    <h3>Fats/Oils</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 2 %>
-        <li><i><%= food.name %></i></li>
+      <h3>Fats/Oils</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 2 %>
+          <li><i><%= food.name %></i></li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+    <div style="clear: both">
+    </div>
+  </div>
+
+  <div class="other_half">
+    <button class="submit centered"><a href="/add_food" class="button_link">Add a New Food</a></button>
+    <button class="submit centered"><a href="/select_food" class="button_link">Choose Your Food</a></button>
+    <div style="clear: both">
+  </div>
+
 </body>

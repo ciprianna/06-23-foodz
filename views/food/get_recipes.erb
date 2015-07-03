@@ -1,50 +1,68 @@
 <!-- Recipes to Display -->
 <body>
-  <h2>Meals you can make:</h2>
-  <h3>Selected Foods:</h3>
-  <ul>
-    <% @food_list.each do |food| %>
-    <li>
-      <%= food %>
-    </li>
-    <% end %>
-  </ul>
-  <p>
-    <h3>Meals you have all the ingredients to make:</h3>
+
+  <div id="home">
+    <nav>
+      <button><a href="/home" class="button_links_sidebar">Home</a></button>
+      <button><a href="/view_all_food" class="button_links_sidebar">View All Food</a></button>
+      <button><a href="/select_food" class="button_links_sidebar">Select the Food You Have</a></button>
+      <button><a href="/all_recipes" class="button_links_sidebar">View All Recipes</a></button>
+      <button><a href="/view_recipe_types" class="button_links_sidebar">View Recipe Types</a></button>
+      <button><a href="/all_categories" class="button_links_sidebar">View Food Categories</a></button>
+    </nav>
+    <div style="clear: both">
+    </div>
+  </div>
+
+  <div class="other_half">
+    <h2>Meals you can make:</h2>
+    <h3>Selected Foods:</h3>
     <ul>
-      <% @recipes_to_make.each do |hash| %>
-        <% if @recipes_percentages[hash["recipe_id"]] == 1 %>
-          <li>
-          <a href="/all_recipes/<%= hash["recipe_id"] %>"><%= hash["name"] %></a></li>
-        <% end %>
+      <% @food_list.each do |food| %>
+      <li>
+        <%= food %>
+      </li>
       <% end %>
     </ul>
-    <h3>Meals you have most ingredients to make:</h3>
-    <ul>
-      <% @recipes_to_make.each do |hash| %>
-        <% if @recipes_percentages[hash["recipe_id"]] < 1 && @recipes_percentages[hash["recipe_id"]] >= 0.75 %>
-          <li>
+    <p>
+      <h3>Meals you have all the ingredients to make:</h3>
+      <ul>
+        <% @recipes_to_make.each do |hash| %>
+          <% if @recipes_percentages[hash["recipe_id"]] == 1 %>
+            <li>
             <a href="/all_recipes/<%= hash["recipe_id"] %>"><%= hash["name"] %></a></li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
-    <h3>Meals you have about half the ingredients to make:</h3>
-    <ul>
-      <% @recipes_to_make.each do |hash| %>
-        <% if @recipes_percentages[hash["recipe_id"]] < 0.75 && @recipes_percentages[hash["recipe_id"]] >= 0.40 %>
-          <li>
-            <a href="/all_recipes/<%= hash["recipe_id"] %>"><%= hash["name"] %></a></li>
+      </ul>
+      <h3>Meals you have most ingredients to make:</h3>
+      <ul>
+        <% @recipes_to_make.each do |hash| %>
+          <% if @recipes_percentages[hash["recipe_id"]] < 1 && @recipes_percentages[hash["recipe_id"]] >= 0.75 %>
+            <li>
+              <a href="/all_recipes/<%= hash["recipe_id"] %>"><%= hash["name"] %></a></li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
-    <h3>Meals you have one or two ingredients for:</h3>
-    <ul>
-      <% @recipes_to_make.each do |hash| %>
-        <% if @recipes_percentages[hash["recipe_id"]] < 0.4 %>
-          <li>
-            <a href="/all_recipes/<%= hash["recipe_id"] %>"><%= hash["name"] %></a></li>
+      </ul>
+      <h3>Meals you have about half the ingredients to make:</h3>
+      <ul>
+        <% @recipes_to_make.each do |hash| %>
+          <% if @recipes_percentages[hash["recipe_id"]] < 0.75 && @recipes_percentages[hash["recipe_id"]] >= 0.40 %>
+            <li>
+              <a href="/all_recipes/<%= hash["recipe_id"] %>"><%= hash["name"] %></a></li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
-  </p>
+      </ul>
+      <h3>Meals you have one or two ingredients for:</h3>
+      <ul>
+        <% @recipes_to_make.each do |hash| %>
+          <% if @recipes_percentages[hash["recipe_id"]] < 0.4 %>
+            <li>
+              <a href="/all_recipes/<%= hash["recipe_id"] %>"><%= hash["name"] %></a></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </p>
+    <div style="clear: both">
+    </div>
+  </div>
 </body>

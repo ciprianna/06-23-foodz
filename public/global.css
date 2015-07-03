@@ -172,6 +172,12 @@ p a {
   display: inline;
 }
 
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 @media (min-width: 500px) {
   #home {
     float: left;

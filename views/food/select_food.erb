@@ -1,52 +1,72 @@
-<!-- Error Message to display if the new recipe type cannot be added -->
-<% if @error %>
-  <h3 class="error">Please select food to generate recipes</h3>
-<% end %>
-
 <!-- Select available food items -->
 <body>
-  <h2>Select Available Food Items</h2>
-  <form action="/get_recipes">
-    <h3>Grains</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 4 %>
-        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
-      <% end %>
+
+  <div id="home">
+    <nav>
+      <button><a href="/home" class="button_links_sidebar">Home</a></button>
+      <button><a href="/view_all_food" class="button_links_sidebar">View All Food</a></button>
+      <button><a href="/select_food" class="button_links_sidebar">Select the Food You Have</a></button>
+      <button><a href="/all_recipes" class="button_links_sidebar">View All Recipes</a></button>
+      <button><a href="/view_recipe_types" class="button_links_sidebar">View Recipe Types</a></button>
+      <button><a href="/all_categories" class="button_links_sidebar">View Food Categories</a></button>
+    </nav>
+    <div style="clear: both">
+    </div>
+  </div>
+
+  <!-- Error Message to display if the new recipe type cannot be added -->
+  <div class="other_half">
+    <% if @error %>
+      <h3 class="error">Please select food to generate recipes</h3>
     <% end %>
-    <h3>Proteins</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 5 %>
-        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+  </div>
+
+  <div class="other_half">
+    <h2>Select Available Food Items</h2>
+    <form action="/get_recipes">
+      <h3>Grains</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 4 %>
+          <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+        <% end %>
       <% end %>
-    <% end %>
-    <h3>Dairy</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 1 %>
-        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+      <h3>Proteins</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 5 %>
+          <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+        <% end %>
       <% end %>
-    <% end %>
-    <h3>Fruits</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 3 %>
-        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+      <h3>Dairy</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 1 %>
+          <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+        <% end %>
       <% end %>
-    <% end %>
-    <h3>Vegetables</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 6 %>
-        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+      <h3>Fruits</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 3 %>
+          <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+        <% end %>
       <% end %>
-    <% end %>
-    <h3>Fats/Oils</h3>
-    <% Food.all.each do |food| %>
-      <% if food.category_id == 2 %>
-        <label><input type="checkbox" name="foods[food_id][]" value="<%= food.name %>"><%= food.name %></label>
+      <h3>Vegetables</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 6 %>
+          <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+        <% end %>
       <% end %>
-    <% end %>
-    <center>
-      <p>
-      <input type="submit" class="submit">
-    </p>
-    </center>
-  </form>
+      <h3>Fats/Oils</h3>
+      <% Food.all.each do |food| %>
+        <% if food.category_id == 2 %>
+          <label><input type="checkbox" name="foods[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+        <% end %>
+      <% end %>
+      <center>
+        <p>
+        <input type="submit" class="submit">
+      </p>
+      </center>
+    </form>
+    <div style="clear: both">
+    </div>
+  </div>
 </body>
