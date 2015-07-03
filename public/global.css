@@ -61,9 +61,14 @@ p {
   font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
 }
 
-button a {
+.button_links_sidebar {
   text-decoration: none;
   color: black;
+}
+
+.button_link {
+  text-decoration: none;
+  color: beige;
 }
 
 li {
@@ -114,7 +119,7 @@ form label:hover {
 .submit {
   border: #4A0112 solid;
   border-radius: 30pt;
-  width: 100pt;
+  width: auto;
   height: 25pt;
   background-color: #4A0112;
   color: beige;
@@ -123,6 +128,7 @@ form label:hover {
   display: block;
   margin: auto;
   text-align: center;
+  margin: 10px;
 }
 
 .submit:hover {
@@ -160,4 +166,22 @@ form textarea {
 
 p a {
   color: #7A1F04;
+}
+
+#submit_new_recipe_type {
+  display: inline;
+}
+
+@media (min-width: 500px) {
+  #home {
+    float: left;
+    width: 25%;
+    padding-right: 10px;
+    padding-bottom: 10px;
+  }
+
+  .other_half {
+    float: left;
+    width: 75%;
+  }
 }
