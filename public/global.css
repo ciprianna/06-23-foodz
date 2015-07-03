@@ -178,6 +178,10 @@ p a {
   display: block;
 }
 
+.smaller_font {
+  font-size: 14px;
+}
+
 @media (min-width: 500px) {
   #home {
     float: left;
@@ -189,5 +193,11 @@ p a {
   .other_half {
     float: left;
     width: 75%;
+  }
+
+  .sub_nav {
+    float: left;
+    width: 18.75%;
+    height: 60px;
   }
 }

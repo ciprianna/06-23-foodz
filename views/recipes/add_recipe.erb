@@ -1,45 +1,62 @@
-<!-- Error Message to display if the new recipe cannot be added -->
-<% if @error %>
-  <h3 class="error">Cannot add recipe: Missing information</h3>
-<% end %>
-
 <!-- Add new recipe -->
 <body>
-  <nav>
-    <button><a href="/all_recipes">Return to View All Recipes</a></button>
-  </nav>
-  <h2>Add New Recipe</h2>
-  <form action="/save_new_recipe">
-    <h3>What's the name of your recipe?</h3>
-    <input type="text" name="recipe[name]" placeholder="Name of New Recipe">
-    <p>
-      <h3>Type of recipe:</h3>
-    <select name="recipe[recipe_type_id]">
-      <% RecipeType.all.each do |type| %>
-        <option value="<%= type.id %>"><%= type.name %></option>
-      <% end %>
-    </select>
-    </p>
-    <p>How many minutes does this take to make?
-    <input type="number" name="recipe[time_to_make]" placeholder="Minutes">
-    </p>
-    <ul>
-      <% Category.all.each do |category| %>
-        <h3><%= category.name %></h3>
-        <% category.foods.each do |food| %>
-            <li>
-              <label><input type="checkbox" name="food[food_id][]" value="<%= food.id %>"><%= food.name %></label>
-            </li>
-          <% end %>
-      <% end %>
-    </ul>
-    <p>
-      If the food you need isn't in the inventory, please add it <a href="/add_food">here</a> before creating your recipe.
-    </p>
-    <p>Recipe Instructions:</p>
-      <textarea name="recipe[information]" rows="20" cols="75" placeholder="Enter recipe instructions here:"></textarea>
-    <p>
-      <input type="submit" class="submit">
-    </p>
-  </form>
+
+  <div id="home">
+    <nav>
+      <button><a href="/home" class="button_links_sidebar">Home</a></button>
+      <button><a href="/view_all_food" class="button_links_sidebar">View All Food</a></button>
+      <button><a href="/select_food" class="button_links_sidebar">Select the Food You Have</a></button>
+      <button><a href="/all_recipes" class="button_links_sidebar">View All Recipes</a></button>
+      <button><a href="/view_recipe_types" class="button_links_sidebar">View Recipe Types</a></button>
+      <button><a href="/all_categories" class="button_links_sidebar">View Food Categories</a></button>
+    </nav>
+    <div style="clear: both">
+    </div>
+  </div>
+
+  <!-- Error Message to display if the new recipe cannot be added -->
+  <div class="other_half">
+    <% if @error %>
+      <h3 class="error">Cannot add recipe: Missing information</h3>
+    <% end %>
+  </div>
+
+  <div class="other_half">
+    <h2>Add New Recipe</h2>
+    <form action="/save_new_recipe">
+      <h3>What's the name of your recipe?</h3>
+      <input type="text" name="recipe[name]" placeholder="Name of New Recipe">
+      <p>
+        <h3>Type of recipe:</h3>
+      <select name="recipe[recipe_type_id]">
+        <% RecipeType.all.each do |type| %>
+          <option value="<%= type.id %>"><%= type.name %></option>
+        <% end %>
+      </select>
+      </p>
+      <p>How many minutes does this take to make?
+      <input type="number" name="recipe[time_to_make]" placeholder="Minutes">
+      </p>
+      <ul>
+        <% Category.all.each do |category| %>
+          <h3><%= category.name %></h3>
+          <% category.foods.each do |food| %>
+              <li>
+                <label><input type="checkbox" name="food[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+              </li>
+            <% end %>
+        <% end %>
+      </ul>
+      <p>
+        If the food you need isn't in the inventory, please add it <a href="/add_food">here</a> before creating your recipe.
+      </p>
+      <p>Recipe Instructions:</p>
+        <textarea name="recipe[information]" rows="20" cols="75" placeholder="Enter recipe instructions here:"></textarea>
+      <p>
+        <input type="submit" class="submit">
+      </p>
+    </form>
+    <div style="clear: both">
+    </div>
+  </div>
 </body>
