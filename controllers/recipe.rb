@@ -74,18 +74,20 @@ end
 
 # Step 3: Save new information
 get "/save_edited_recipe" do
-  recipe_to_change = Recipe.find(params["recipe"]["id"])
-  recipe_to_change.name = params["recipe"]["name"]
-  recipe_to_change.time_to_make = params["recipe"]["time_to_make"].to_i
-  recipe_to_change.recipe_type_id = params["recipe"]["recipe_type_id"].to_i
-  recipe_to_change.information = params["recipe"]["information"]
+  @recipe_id = params["id"]
+  @recipe_to_change = Recipe.find(params["recipe"]["id"])
+  @recipe_to_change.name = params["recipe"]["name"]
+  @recipe_to_change.time_to_make = params["recipe"]["time_to_make"].to_i
+  @recipe_to_change.recipe_type_id = params["recipe"]["recipe_type_id"].to_i
+  @recipe_to_change.information = params["recipe"]["information"]
 
-  saved_recipe = recipe_to_change.save_valid
+  saved_recipe = @recipe_to_change.save_valid
 
-  if !saved_recipe == false
+  if (!saved_recipe == false) && (!params["food"].nil?)
     saved_recipe.add_to_bridge(params["food"]["food_id"])
     erb :"recipes/success"
   else
+    @recipe_to_change
     @error = true
     erb :"recipes/edit_recipe_form"
   end

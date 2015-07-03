@@ -1,14 +1,28 @@
 <!-- View all recipes -->
 <body>
-  <nav>
-    <button><a href="/all_recipes">Return to View All Recipes</a></button>
-  </nav>
-  <h2>Choose a Recipe to Edit</h2>
-  <ul>
-    <% Recipe.all.each do |recipe| %>
-      <li>
-        <a href="/edit_recipe/<%= recipe.id %>"><i><%= recipe.name %></i></a>, <%= recipe.recipe_type_id %>, <b>Time to Make</b>: <%= recipe.time_to_make %>
-      </li>
-    <% end %>
-  </ul>
+
+  <div id="home">
+    <nav>
+      <button><a href="/home" class="button_links_sidebar">Home</a></button>
+      <button><a href="/view_all_food" class="button_links_sidebar">View All Food</a></button>
+      <button><a href="/select_food" class="button_links_sidebar">Select the Food You Have</a></button>
+      <button><a href="/all_recipes" class="button_links_sidebar">View All Recipes</a></button>
+      <button><a href="/view_recipe_types" class="button_links_sidebar">View Recipe Types</a></button>
+      <button><a href="/all_categories" class="button_links_sidebar">View Food Categories</a></button>
+    </nav>
+    <div style="clear: both">
+    </div>
+  </div>
+
+  <div class="other_half">
+    <h2>Choose a Recipe to Edit</h2>
+    <ul>
+      <% Recipe.all.each do |recipe| %>
+        <li>
+          <a href="/edit_recipe/<%= recipe.id %>"><i><%= recipe.name %></i></a>, <%= recipe.recipe_type_id %>, <b>Time to Make</b>: <%= recipe.time_to_make %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
 </body>

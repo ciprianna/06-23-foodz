@@ -1,50 +1,67 @@
-<!-- Error Message to display if the new recipe cannot be added -->
-<% if @error %>
-  <h3 class="error">Cannot change recipe: Missing information</h3>
-<% end %>
-
 <!-- Edit recipe -->
 <body>
-  <nav>
-    <a href="/all_recipes">Return to View All Recipes</a>
-  </nav>
-  <h2>Change desired information, then click "submit"</h2>
-  <form action="/save_edited_recipe">
-    <h3>Recipe Name</h3>
-    <input type="text" name="recipe[name]" placeholder="Name of New Recipe" value="<%= @recipe_to_change.name %>">
-    <p>
-      <h3>Type of recipe:</h3>
-    <select name="recipe[recipe_type_id]">
-      <% RecipeType.all.each do |type| %>
-        <% if @recipe_to_change.recipe_type_id == type.id %>
-          <option value="<%= type.id %>" select><%= type.name %></option>
-        <% else %>
-          <option value="<%= type.id %>"><%= type.name %></option>
-        <% end %>
-      <% end %>
-    </select>
-    </p>
-    <p>How many minutes does this take to make?
-    <input type="number" name="recipe[time_to_make]" placeholder="Minutes" value="<%= @recipe_to_change.time_to_make %>">
-    </p>
-    <ul>
-      <% Category.all.each do |category| %>
-        <h3><%= category.name %></h3>
-        <% category.foods.each do |food| %>
-            <li>
-              <label><input type="checkbox" name="food[food_id][]" value="<%= food.id %>"><%= food.name %></label>
-            </li>
+
+  <div id="home">
+    <nav>
+      <button><a href="/home" class="button_links_sidebar">Home</a></button>
+      <button><a href="/view_all_food" class="button_links_sidebar">View All Food</a></button>
+      <button><a href="/select_food" class="button_links_sidebar">Select the Food You Have</a></button>
+      <button><a href="/all_recipes" class="button_links_sidebar">View All Recipes</a></button>
+      <button><a href="/view_recipe_types" class="button_links_sidebar">View Recipe Types</a></button>
+      <button><a href="/all_categories" class="button_links_sidebar">View Food Categories</a></button>
+    </nav>
+    <div style="clear: both">
+    </div>
+  </div>
+
+  <!-- Error Message to display if the new recipe cannot be added -->
+  <div class="other_half">
+    <% if @error %>
+      <h3 class="error">Cannot change recipe: Missing information</h3>
+    <% end %>
+  </div>
+
+  <div class="other_half">
+    <h2>Change desired information, then click "submit"</h2>
+    <form action="/save_edited_recipe">
+      <h3>Recipe Name</h3>
+      <input type="text" name="recipe[name]" placeholder="Name of New Recipe" value="<%= @recipe_to_change.name %>">
+      <p>
+        <h3>Type of recipe:</h3>
+      <select name="recipe[recipe_type_id]">
+        <% RecipeType.all.each do |type| %>
+          <% if @recipe_to_change.recipe_type_id == type.id %>
+            <option value="<%= type.id %>" select><%= type.name %></option>
+          <% else %>
+            <option value="<%= type.id %>"><%= type.name %></option>
           <% end %>
-      <% end %>
-    </ul>
-    <p>
-      If the food you need isn't in the inventory, please add it <a href="/add_food">here</a> before creating your recipe.
-    </p>
-    <p>Recipe Instructions:</p>
-      <textarea name="recipe[information]" rows="20" cols="75" placeholder="Enter recipe instructions here:"><%= @recipe_to_change.information %></textarea>
-      <input type="hidden" name="recipe[id]" value="<%= params['id'] %>">
-    <p>
-      <input type="submit" class="submit">
-    </p>
-  </form>
+        <% end %>
+      </select>
+      </p>
+      <p>How many minutes does this take to make?
+      <input type="number" name="recipe[time_to_make]" placeholder="Minutes" value="<%= @recipe_to_change.time_to_make %>">
+      </p>
+      <ul>
+        <% Category.all.each do |category| %>
+          <h3><%= category.name %></h3>
+          <% category.foods.each do |food| %>
+              <li>
+                <label><input type="checkbox" name="food[food_id][]" value="<%= food.id %>"><%= food.name %></label>
+              </li>
+            <% end %>
+        <% end %>
+      </ul>
+      <p>
+        If the food you need isn't in the inventory, please add it <a href="/add_food">here</a> before creating your recipe.
+      </p>
+      <p>Recipe Instructions:</p>
+        <textarea name="recipe[information]" rows="20" cols="75" placeholder="Enter recipe instructions here:"><%= @recipe_to_change.information %></textarea>
+        <input type="hidden" name="recipe[id]" value="<%= params['id'] %>">
+      <p>
+        <input type="submit" class="submit">
+      </p>
+    </form>
+    <div style="clear: both">
+    </div>
+  </div>
 </body>
