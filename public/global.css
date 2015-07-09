@@ -232,6 +232,11 @@ p a {
     width: 75%;
   }
 
+  #sub_nav {
+    visibility: visible;
+    height: auto;
+  }
+
   .sub_nav {
     float: left;
     width: 18.75%;
