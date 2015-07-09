@@ -187,8 +187,21 @@ p a {
   margin: 8px;
 }
 
+.menu_icon a {
+  cursor: pointer;
+  height: 35px;
+  width: 30px;
+  position: absolute;
+  top: 10px;
+}
+
 #submit_new_recipe_type {
   display: inline;
+}
+
+#home {
+  visibility: hidden;
+  height: 0;
 }
 
 @media (min-width: 500px) {
@@ -197,6 +210,7 @@ p a {
     width: 25%;
     padding-right: 10px;
     padding-bottom: 10px;
+    visibility: visible;
   }
 
   .other_half {
