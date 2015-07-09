@@ -187,7 +187,7 @@ p a {
   margin: 8px;
 }
 
-.menu_icon a {
+#menu_link {
   cursor: pointer;
   height: 35px;
   width: 30px;
@@ -199,9 +199,14 @@ p a {
   display: inline;
 }
 
-#home {
+.hide_home {
   visibility: hidden;
   height: 0;
+}
+
+.show_home {
+  visibility: visible;
+  height: auto;
 }
 
 @media (min-width: 500px) {
