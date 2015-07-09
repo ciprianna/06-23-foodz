@@ -216,6 +216,15 @@ p a {
     padding-right: 10px;
     padding-bottom: 10px;
     visibility: visible;
+    height: auto;
+  }
+
+  .menu_icon {
+    visibility: hidden;
+  }
+
+  .menu_link {
+    visibility: hidden;
   }
 
   .other_half {
