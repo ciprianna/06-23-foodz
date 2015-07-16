@@ -5,12 +5,24 @@
   <title>Meals I Can Make</title>
   <link rel="stylesheet" href="/global.css">
   <script type="text/javascript" src="global.js" defer></script>
+  <div>
 
-  <div class="menu_icon">
-    <a href="#home" id="menu_link"></a>
+    <div class="menu_icon">
+      <a href="#home" id="menu_link"></a>
+    </div>
+    <div>
+      <% if !session[:user_id] %>
+        <button id="logon" class="submit smaller_font float_right"><a href="/login" class="button_link">Login</a></button>
+      <% else %>
+        <button id="logon" class="submit smaller_font float_right">Logged In</button>
+      <% end %>
+    </div>
+
+    <h1 class="page_title">Meals I Can Make</h1>
+    <div style="clear: both">
+
+    </div>
   </div>
-
-  <h1>Meals I Can Make</h1>
   <hr>
 </head>
 <body>

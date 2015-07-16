@@ -209,6 +209,14 @@ p a {
   height: auto;
 }
 
+.float_right {
+  float: right;
+}
+
+.page_title {
+  font-size: 20pt;
+}
+
 @media (min-width: 500px) {
   #home {
     float: left;
@@ -217,6 +225,10 @@ p a {
     padding-bottom: 10px;
     visibility: visible;
     height: auto;
+  }
+
+  .page_title {
+    font-size: 24pt;
   }
 
   .menu_icon {
@@ -242,4 +254,5 @@ p a {
     width: 18.75%;
     height: 60px;
   }
+
 }

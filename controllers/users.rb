@@ -37,6 +37,7 @@ get "/authenticate_login" do
     given_pw = params["users"]["password"]
     actual_pw = BCrypt::Password.new(user_email.password)
     if actual_pw == given_pw
+      session[:user_id] = user_email.id
       erb :"main/home"
     else
       @valid = false
