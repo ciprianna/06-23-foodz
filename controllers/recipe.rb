@@ -1,3 +1,15 @@
+# # ------------------------------------------------------------------------------
+# # Find if user is logged in
+# # ------------------------------------------------------------------------------
+# def current_user
+#   if session[:user_id]
+#     @current_user = User.find(session[:user_id])
+#   else
+#     @login_failed = true
+#     return erb :"users/login"
+#   end
+# end
+
 # ------------------------------------------------------------------------------
 # Displays all recipes
 # ------------------------------------------------------------------------------
@@ -63,7 +75,11 @@ end
 # ------------------------------------------------------------------------------
 # Step 1: Select a recipe to edit
 get "/edit_recipe" do
-  erb :"recipes/edit_recipe"
+  if session[:user_id]
+    erb :"recipes/edit_recipe"
+  else
+    erb :"users/login"
+  end
 end
 
 # Step 2: Display form to edit information
