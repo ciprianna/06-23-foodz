@@ -1,4 +1,6 @@
+<!-- Add new recipe type -->
 <body>
+
   <div id="home" class="hide_home">
     <nav>
       <button><a href="/home" class="button_links_sidebar">Home</a></button>
@@ -12,14 +14,29 @@
     </div>
   </div>
 
-  <div>
-    <% if @valid %>
-      <h3>Login successful!</h3>
+  <!-- Error Message to display if the new user cannot be added -->
+  <div class="other_half">
+    <% if @valid == false  %>
+      <h3 class="error">Login Failed</h3>
     <% end %>
   </div>
 
-  <p>
-    Welcome to Meals I Can Make! If you're looking for something you can make, enter in a few food items and let us give you some dinner ideas! You can also browse meals by time to make, or by what you're in the mood to eat.
-  </p>
+  <div class="other_half">
+    <h2>Login</h2>
+    <form action="/authenticate_login">
+      <h4>Email</h4>
+      <input type="text" name="users[email]" placeholder="Email">
+      <h4>Password</h4>
+      <input type="password" name="users[password]" placeholder="Password" size="25">
+      <input type="submit" class="submit" id="submit_login">
+    </form>
+    <div style="clear: both">
+    </div>
+  </div>
+
+  <div class="other_half">
+    <div style="clear: both">
+    </div>
+  </div>
 
 </body>

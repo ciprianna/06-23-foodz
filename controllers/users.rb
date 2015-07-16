@@ -18,3 +18,32 @@ get "/save_new_user" do
     erb :"users/new_user"
   end
 end
+
+# ------------------------------------------------------------------------------
+# Login
+# ------------------------------------------------------------------------------
+# Step 1 - Display empty login form
+get "/login" do
+  erb :"users/login"
+end
+
+# Step 2 - Authenticate login
+get "/authenticate_login" do
+  entered_email = params["users"]["email"]
+  user_email = User.find_email(entered_email)
+
+  if !user_email.nil?
+    @valid = true
+    given_pw = params["users"]["password"]
+    actual_pw = BCrypt::Password.new(user_email.password)
+    if actual_pw == given_pw
+      erb :"main/home"
+    else
+      @valid = false
+      erb :"users/login"
+    end
+  else
+    @valid = false
+    erb :"users/login"
+  end
+end

@@ -28,12 +28,14 @@ class User
   # email - String for the user's email
   #
   # Returns the User Object, if it exists, else false
-  def self.find_email(email)
-    results = DATABASE.execute("SELECT * FROM users WHERE email = #{email};").first
+  def self.find_email(user_email)
+    query_string = "SELECT * FROM users WHERE email = '#{user_email}';"
+    results = DATABASE.execute(query_string).first
+    result_id = results['id'].to_i
 
-    if !results.nil
-      user = User.find(results['id'])
-      return user
+    if !results.empty?
+      @user = User.find(result_id)
+      return @user
     else
       false
     end
