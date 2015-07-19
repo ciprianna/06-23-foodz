@@ -17,7 +17,9 @@
   <!-- Error Message to display if the new recipe type cannot be added -->
   <div class="other_half">
     <% if @error %>
-      <h3 class="error">Cannot add recipe type: Missing information</h3>
+      <% @added_recipe_type.errors.full_messages.each do |message| %>
+        <h3 class="error"><%= message %></h3>
+      <% end %>
     <% end %>
   </div>
 
