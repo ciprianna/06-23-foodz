@@ -49,15 +49,17 @@ end
 
 # Step 2: Save new recipe
 get "/save_new_recipe" do
-  recipe_to_add = Recipe.new({"name" => params['recipe']['name'], "recipe_type_id" => params['recipe']['recipe_type_id'].to_i, "time_to_make" => params['recipe']['time_to_make'].to_i, "information" => params['recipe']['information']})
+  @recipe_to_add = Recipe.create({"name" => params['recipe']['name'], "recipe_type_id" => params['recipe']['recipe_type_id'].to_i, "time_to_make" => params['recipe']['time_to_make'].to_i, "information" => params['recipe']['information']})
 
-  add_recipe = recipe_to_add.add_to_database
-  if !add_recipe == false
-    add_recipe.add_to_bridge(params["food"]["food_id"])
-    erb :"recipes/success"
-  else
+  if !@recipe_to_add.errors.empty?
     @error = true
     erb :"recipes/add_recipe"
+  else
+    params["food"]["food_id"].each do |food_id|
+      food = Food.find(food_id)
+      @recipe_to_add.foods << food
+    end
+    erb :"recipes/success"
   end
 
 end

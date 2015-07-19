@@ -17,8 +17,9 @@
   <!-- Error Message to display if the new recipe cannot be added -->
   <div class="other_half">
     <% if @error %>
-      
-      <h3 class="error">Cannot add recipe: Missing information</h3>
+      <% @recipe_to_add.errors.full_messages.each do |message| %>
+        <h3 class="error"><%= message %></h3>
+      <% end %>
     <% end %>
   </div>
 
