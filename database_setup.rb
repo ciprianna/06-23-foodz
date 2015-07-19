@@ -33,11 +33,11 @@ unless ActiveRecord::Base.connection.table_exists?(:recipes)
   end
 end
 
-# recipes_foods table
-unless ActiveRecord::Base.connection.table_exists?(:recipes_foods)
-  ActiveRecord::Base.connection.create_table :recipes_foods do |table|
-    table.integer :recipe_id
+# foods_recipes table
+unless ActiveRecord::Base.connection.table_exists?(:foods_recipes)
+  ActiveRecord::Base.connection.create_table :foods_recipes do |table|
     table.integer :food_id
+    table.integer :recipe_id
   end
 end
 
@@ -48,6 +48,8 @@ unless ActiveRecord::Base.connection.table_exists?(:users)
     table.text :password
   end
 end
+
+ActiveRecord::Base.logger = ActiveSupport::Logger.new(STDOUT)
 
 # DATABASE.execute("CREATE TABLE IF NOT EXISTS foods (id INTEGER PRIMARY KEY, name TEXT NOT NULL, category_id INTEGER NOT NULL);")
 # DATABASE.execute("CREATE TABLE IF NOT EXISTS categories (id INTEGER PRIMARY KEY, name TEXT NOT NULL);")

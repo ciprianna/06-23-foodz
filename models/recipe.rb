@@ -1,33 +1,7 @@
-# Recipe Model
-require_relative "../database_class_methods.rb"
-require_relative "../database_instance_methods.rb"
+class Recipe < ActiveRecord::Base
 
-class Recipe
-  extend DatabaseClassMethods
-  include DatabaseInstanceMethods
 
-  attr_reader :id
-  attr_accessor :name, :recipe_type_id, :time_to_make, :information
-
-  # Creates a new Recipe Object
-  #
-  # options - empty Hash
-  #   - id (optional) - Integer, primary key
-  #   - name (optional) - String, name for the Recipe
-  #   - recipe_type_id (optional) - Integer, foreign key from the recipe_types
-  #                               table
-  #   - time_to_make (optional) - Integer, number of minutes it takes to make
-  #                                 the recipe
-  #   - information (optional) - String giving steps to make the recipe
-  #
-  # Returns new Recipe Object
-  def initialize(options = {})
-    @id = options["id"]
-    @name = options["name"]
-    @recipe_type_id = options["recipe_type_id"]
-    @time_to_make = options["time_to_make"]
-    @information = options["information"]
-  end
+  has_and_belongs_to_many :foods
 
   # Gives recipes within a certain recipe type
   #
@@ -71,12 +45,7 @@ class Recipe
     return store_results
   end
 
-  # Selects all foods in a recipe
-  #
-  # Returns an Array of Hashes
-  def foods
-    results = DATABASE.execute("SELECT foods.name FROM foods JOIN recipes_foods ON foods.id = recipes_foods.food_id WHERE recipes_foods.recipe_id = #{self.id};")
-  end
+
 
   # Stores food_id and recipe_id to the recipes_foods table
   #
@@ -117,8 +86,9 @@ class Recipe
   def self.ingredients(counts)
     recipe_ingredients = Hash.new 0
     counts.each do |key, value|
-      x = DATABASE.execute("SELECT * FROM recipes_foods WHERE recipe_id = #{key};")
-      recipe_ingredients[key] = x.length
+      recipe = Recipe.find(key)
+      number_of_foods = recipe.foods
+      recipe_ingredients[key] = number_of_foods.length
     end
     return recipe_ingredients
   end

@@ -25,3 +25,5 @@ require_relative "controllers/category.rb"
 require_relative "controllers/recipe_type.rb"
 require_relative "controllers/recipe.rb"
 require_relative "controllers/users.rb"
+
+binding.pry
