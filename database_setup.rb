@@ -1,5 +1,5 @@
 # Creates the database connection
-ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'photo_albums.db')
+ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'meals_i_can_make.db')
 
 # foods table
 unless ActiveRecord::Base.connection.table_exists?(:foods)
@@ -55,6 +55,6 @@ end
 # DATABASE.execute("CREATE TABLE IF NOT EXISTS recipes (id INTEGER PRIMARY KEY, name TEXT NOT NULL, recipe_type_id INTEGER NOT NULL, time_to_make INTEGER NOT NULL, information TEXT NOT NULL);")
 # DATABASE.execute("CREATE TABLE IF NOT EXISTS recipes_foods (recipe_id INTEGER NOT NULL, food_id INTEGER NOT NULL);")
 # DATABASE.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL);")
-# 
+#
 # # Returns the results as a Hash
 # ActiveRecord::Base.connection.results_as_hash = true
