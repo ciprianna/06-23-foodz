@@ -17,7 +17,9 @@
   <!-- Error Message to display if the new food cannot be added -->
   <div class="other_half">
     <% if @error %>
-      <h3 class="error">Cannot add food: Missing information or duplicate value</h3>
+      <% @new_food.errors.full_messages.each do |error| %>
+        <h3 class="error"><%= error %></h3>
+      <% end %>
     <% end %>
   </div>
 
