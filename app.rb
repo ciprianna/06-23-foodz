@@ -1,4 +1,5 @@
 require "pry"
+require "active_record"
 require "sinatra"
 require "sinatra/reloader"
 require "bcrypt"
