@@ -6,29 +6,23 @@ class Recipe < ActiveRecord::Base
 
   has_and_belongs_to_many :foods
 
-  # # Returns recipes based on amount of time it takes to make
-  # #
-  # # time - String, indicating the amount of time it takes. Should be categories
-  # #         of either "quick", "hour", or "long"
-  # #
-  # # Returns an Array of Objects
-  # def self.where_time(time)
-  #   if time == "quick"
-  #     results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make <= 30;")
-  #   elsif time == "hour"
-  #     results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make > 30 AND time_to_make <= 65;")
-  #   elsif time == "long"
-  #     results = DATABASE.execute("SELECT * FROM recipes WHERE time_to_make > 65;")
-  #   end
+  # Returns recipes based on amount of time it takes to make
   #
-  #   store_results = []
+  # time - String, indicating the amount of time it takes. Should be categories
+  #         of either "quick", "hour", or "long"
   #
-  #   results.each do |hash|
-  #     store_results << Recipe.new(hash)
-  #   end
-  #
-  #   return store_results
-  # end
+  # Returns an Array of Objects
+  def self.where_time(time)
+    if time == "quick"
+      results = Recipe.where("time_to_make <= 30")
+    elsif time == "hour"
+      results = Recipe.where(time_to_make: 30..65)
+    elsif time == "long"
+      results = Recipe.where("time_to_make > 65")
+    end
+
+    return results
+  end
 
   # Utility method - collects the number of ingredients a recipe takes
   #
