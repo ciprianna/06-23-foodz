@@ -8,10 +8,10 @@ end
 
 # Step 2 - Save form information
 get "/save_new_user" do
-  new_user = User.new({"email" => params["users"]["email"], "password" => params["users"]["password"]})
+  @new_user = User.create({"email" => params["users"]["email"], "password" => params["users"]["password"]})
 
-  @user_added = new_user.add_to_database
-  if @user_added != false
+  if @new_user.errors.empty?
+    session[:user_id] = @new_user.id
     erb :"users/success"
   else
     @error = true
