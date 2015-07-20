@@ -27,46 +27,38 @@
     <p>
       <h3>Meals you have all the ingredients to make:</h3>
       <ul>
-        <% @recipes.each do |recipe_list| %>
-          <% recipe_list.each do |recipe| %>
+        <% @recipes.each do |recipe| %>
             <% if @recipes_percentages[recipe.id] == 1 %>
               <li>
                 <a href="/all_recipes/<%= recipe.id %>"><%= recipe.name %></a></li>
             <% end %>
-          <% end %>
         <% end %>
       </ul>
       <h3>Meals you have most ingredients to make:</h3>
       <ul>
-        <% @recipes.each do |recipe_list| %>
-          <% recipe_list.each do |recipe| %>
+        <% @recipes.each do |recipe| %>
             <% if @recipes_percentages[recipe.id] < 1 && @recipes_percentages[recipe.id] >= 0.75 %>
               <li>
                 <a href="/all_recipes/<%= recipe.id %>"><%= recipe.name %></a></li>
             <% end %>
-          <% end %>
         <% end %>
       </ul>
       <h3>Meals you have about half the ingredients to make:</h3>
       <ul>
-        <% @recipes.each do |recipe_list| %>
-          <% recipe_list.each do |recipe| %>
+        <% @recipes.each do |recipe| %>
             <% if @recipes_percentages[recipe.id] < 0.75 && @recipes_percentages[recipe.id] >= 0.40 %>
               <li>
                 <a href="/all_recipes/<%= recipe.id %>"><%= recipe.name %></a></li>
             <% end %>
-          <% end %>
         <% end %>
       </ul>
       <h3>Meals you have one or two ingredients for:</h3>
       <ul>
-        <% @recipes.each do |recipe_list| %>
-          <% recipe_list.each do |recipe| %>
+        <% @recipes.each do |recipe| %>
             <% if @recipes_percentages[recipe.id] < 0.4 %>
               <li>
                 <a href="/all_recipes/<%= recipe.id %>"><%= recipe.name %></a></li>
             <% end %>
-          <% end %>
         <% end %>
       </ul>
     </p>

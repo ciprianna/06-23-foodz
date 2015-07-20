@@ -42,17 +42,20 @@ get "/get_recipes" do
   else
     @food_list = Food.find(params["foods"]["food_id"])
 
-    @recipes = []
+    recipes = []
     @food_list.each do |food|
-      @recipes << food.recipes
+      recipes << food.recipes
     end
 
     recipe_ids = []
-    @recipes.each do |recipe_list|
+    recipes.each do |recipe_list|
       recipe_list.each do |recipe|
         recipe_ids << recipe.id
       end
     end
+
+    recipes_unique = recipe_ids.uniq
+    @recipes = Recipe.find(recipes_unique)
 
     counts = Food.get_counts(recipe_ids)
     recipe_ingredients = Recipe.ingredients(counts)
