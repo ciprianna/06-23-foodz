@@ -99,11 +99,19 @@ get "/save_edited_recipe" do
   @recipe_to_change.recipe_type_id = params["recipe"]["recipe_type_id"].to_i
   @recipe_to_change.information = params["recipe"]["information"]
 
-  saved_recipe = @recipe_to_change.save_valid
+  @recipe_to_change.save
 
-  if (!saved_recipe == false) && (!params["food"].nil?)
-    saved_recipe.add_to_bridge(params["food"]["food_id"])
-    erb :"recipes/success"
+  if @recipe_to_change.errors.empty?
+    if !params["food"].nil?
+      params["food"]["food_id"].each do |food_id|
+        food = Food.find(food_id)
+        @recipe_to_change.foods << food
+      end
+      erb :"recipes/success"
+    else
+      @missing_food = true
+      erb :"recipes/edit_recipe_form"
+    end
   else
     @recipe_to_change
     @error = true
