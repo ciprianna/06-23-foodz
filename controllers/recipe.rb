@@ -103,6 +103,7 @@ get "/save_edited_recipe" do
 
   if @recipe_to_change.errors.empty?
     if !params["food"].nil?
+      @recipe_to_change.foods.destroy_all
       params["food"]["food_id"].each do |food_id|
         food = Food.find(food_id)
         @recipe_to_change.foods << food

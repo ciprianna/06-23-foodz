@@ -60,4 +60,28 @@ class Recipe < ActiveRecord::Base
     return in_order
   end
 
+ # Stores food_id and recipe_id to the recipes_foods table
+ #
+ # food_ids - Array of food_id Integers; primary keys in the foods table
+ # recipe - Recipe Object to save to the database
+ #
+ # Returns the Object it's being called on
+ def add_to_bridge(food_ids)
+   recipe = Recipe.find(self.id)
+
+   if recipe.nil?
+     food_ids.each do |food_id|
+       food = Food.find(food_id)
+       recipe_to_add.foods << food
+     end
+   else
+     recipe.foods.destroy
+     food_ids.each do |food_id|
+       food = Food.find(food_id)
+       recipe_to_add.foods << food
+     end
+   end
+   return self
+ end
+
 end
