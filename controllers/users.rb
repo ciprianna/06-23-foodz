@@ -8,7 +8,8 @@ end
 
 # Step 2 - Save form information
 get "/save_new_user" do
-  @new_user = User.create({"email" => params["users"]["email"], "password" => params["users"]["password"]})
+  password = BCrypt::Password.create(params["users"]["password"])
+  @new_user = User.create({"email" => params["users"]["email"], "password" => password})
 
   if @new_user.errors.empty?
     session[:user_id] = @new_user.id
@@ -30,14 +31,14 @@ end
 # Step 2 - Authenticate login
 get "/authenticate_login" do
   entered_email = params["users"]["email"]
-  user_email = User.find_email(entered_email)
+  @user_email = User.find_by(email: entered_email)
 
-  if !user_email.nil?
+  if !@user_email.nil?
     @valid = true
     given_pw = params["users"]["password"]
-    actual_pw = BCrypt::Password.new(user_email.password)
+    actual_pw = BCrypt::Password.new(@user_email.password)
     if actual_pw == given_pw
-      session[:user_id] = user_email.id
+      session[:user_id] = @user_email.id
       erb :"main/home"
     else
       @valid = false
