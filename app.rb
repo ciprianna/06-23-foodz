@@ -9,7 +9,6 @@ require "bcrypt"
 set :sessions, true
 
 # SQL/Database
-require "sqlite3"
 require_relative "database_setup.rb"
 
 # Models
